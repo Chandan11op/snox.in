@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import RelatedProducts from "./RelatedProducts/RelatedProducts";
-import { FaFacebookF, FaTwitter, FaInstagram, FaLinkedinIn } from "react-icons/fa";
+import { FaFacebookF, FaTwitter, FaLinkedinIn } from "react-icons/fa";
 import { useParams } from "react-router-dom";
 import { useGetProductQuery } from "../../state/api";
 import { motion } from "framer-motion";
