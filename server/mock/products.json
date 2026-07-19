@@ -1,0 +1,52 @@
+[
+  {
+    "_id": "60d21b4667d0d8992e610c85",
+    "title": "High Quality Triclover Valve",
+    "desc": "A very high quality triclover valve for industrial use.",
+    "photo": "https://via.placeholder.com/300?text=Triclover+Valve",
+    "category": "triclover valve",
+    "createdAt": "2023-01-01T00:00:00Z",
+    "updatedAt": "2023-01-01T00:00:00Z",
+    "__v": 0
+  },
+  {
+    "_id": "60d21b4667d0d8992e610c86",
+    "title": "Stainless Steel Dairy Fitting 2 inch",
+    "desc": "Durable dairy fitting made of premium stainless steel.",
+    "photo": "https://via.placeholder.com/300?text=Dairy+Fitting",
+    "category": "stainless steel dairy fittings",
+    "createdAt": "2023-01-02T00:00:00Z",
+    "updatedAt": "2023-01-02T00:00:00Z",
+    "__v": 0
+  },
+  {
+    "_id": "60d21b4667d0d8992e610c87",
+    "title": "Standard Fittings Pack",
+    "desc": "A multi-pack of assorted standard fittings for quick repairs.",
+    "photo": "https://via.placeholder.com/300?text=Fittings",
+    "category": "fittings",
+    "createdAt": "2023-01-03T00:00:00Z",
+    "updatedAt": "2023-01-03T00:00:00Z",
+    "__v": 0
+  },
+  {
+    "_id": "60d21b4667d0d8992e610c88",
+    "title": "Triclover Fitting 1.5 inch",
+    "desc": "High grade triclover fitting 1.5 inch variant.",
+    "photo": "https://via.placeholder.com/300?text=Triclover+Fitting",
+    "category": "triclover fittings",
+    "createdAt": "2023-01-04T00:00:00Z",
+    "updatedAt": "2023-01-04T00:00:00Z",
+    "__v": 0
+  },
+  {
+    "_id": "60d21b4667d0d8992e610c89",
+    "title": "Premium Stainless Steel Tube",
+    "desc": "Heavy duty stainless steel for various applications.",
+    "photo": "https://via.placeholder.com/300?text=Stainless+Steel",
+    "category": "stainless steels",
+    "createdAt": "2023-01-05T00:00:00Z",
+    "updatedAt": "2023-01-05T00:00:00Z",
+    "__v": 0
+  }
+]

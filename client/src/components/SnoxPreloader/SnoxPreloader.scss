@@ -1,0 +1,32 @@
+.sn-ox-preloader {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+  }
+  
+  .sn-ox-spinner {
+    display: flex;
+  }
+  
+  .sn-ox-letter {
+    font-size: 48px;
+    margin-right: 8px;
+    animation: sn-ox-spinner-anim 1s infinite linear;
+  }
+  
+  @keyframes sn-ox-spinner-anim {
+    0% {
+      opacity: 1;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 0.5;
+      transform: scale(1.2);
+    }
+    100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+  
