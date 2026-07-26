@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { Search } from "lucide-react";
 import SearchComponent from "./Search/Search";
-import Logo from '../../assets/logo/snoxlogo.png';
+import Logo from "../../assets/logo/snoxlogo.png";
 import { motion, AnimatePresence } from "framer-motion";
 
 const Header = () => {

@@ -1,15 +1,22 @@
 import React, { useState, useEffect } from "react";
-import { categories, products } from "../../data/productData";
+import { productsData } from "../../data/products";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight, Factory, ShieldCheck, Globe2 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+
+// Derive categories dynamically from productsData
+const products = productsData;
+const categories = Array.from(new Set(products.map(p => p.category))).map(cat => ({
+  id: cat,
+  name: cat
+}));
 
 const Home = () => {
   const navigate = useNavigate();
   const [currentSlide, setCurrentSlide] = useState(0);
 
   // Use the first 3 product images for the slider
-  const sliderImages = products.slice(0, 3).map(p => p.image);
+  const sliderImages = products.slice(0, 3).map(p => p.images?.[0] || "");
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -109,7 +116,7 @@ const Home = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {categories.map((cat, i) => {
               const categoryProduct = products.find(p => p.category === cat.id);
-              const imgsrc = categoryProduct ? categoryProduct.image : null;
+              const imgsrc = categoryProduct?.images?.[0] || null;
               
               return (
                 <motion.div 
