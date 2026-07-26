@@ -21,7 +21,7 @@ export const products = [
         material: 'SS304 / SS316L',
         connectionType: 'Flanged / Weld / Clamp',
         industries: ['Food & Beverage', 'Pharma', 'Chemical'],
-        image: ""
+        image: require('../assets/products/BUTTERFLYVALVE/butterfly-valve-flange.jpg')
     },
     {
         id: 'tc-ball-valve',
@@ -34,7 +34,7 @@ export const products = [
         material: 'SS316L',
         connectionType: 'Tri-Clamp',
         industries: ['Brewery', 'Dairy', 'Cosmetics'],
-        image: ""
+        image: require('../assets/products/BALLVALVE/tc-ball-valve.jpg')
     },
     {
         id: 'nrv-valve',
@@ -47,7 +47,7 @@ export const products = [
         material: 'SS304 / SS316L',
         connectionType: 'Weld / Clamp',
         industries: ['Pharmaceutical', 'Water Treatment', 'Food'],
-        image: ""
+        image: require('../assets/products/NRV/nrv-valve.jpg')
     },
     {
         id: 'sight-glasses',
@@ -60,7 +60,7 @@ export const products = [
         material: 'SS316L / Borosilicate Glass',
         connectionType: 'Tri-Clamp / Weld',
         industries: ['Brewery', 'Dairy', 'Chemical'],
-        image: ""
+        image: require('../assets/products/SIGHTGLASS/sight-glasses.jpg')
     },
     {
         id: 'ss-tc-diaphragm-valves',
@@ -73,7 +73,7 @@ export const products = [
         material: 'SS316L',
         connectionType: 'Tri-Clamp',
         industries: ['Biotechnology', 'Pharmaceutical', 'Semiconductor'],
-        image: ""
+        image: require('../assets/products/DIAPHRAGMVALVE/ss-tc-diaphragm-valves.jpg')
     },
     {
         id: 'ss-tubing',
@@ -86,7 +86,7 @@ export const products = [
         material: 'SS304 / SS316L',
         connectionType: 'Weld',
         industries: ['All Sanitary Industries'],
-        image: ""
+        image: require('../assets/products/TUBING/tubing.png')
     },
     {
         id: 'sanitary-accessories',
@@ -99,7 +99,7 @@ export const products = [
         material: 'SS304',
         connectionType: 'Various',
         industries: ['Food Processing', 'Dairy', 'Pharma'],
-        image: ""
+        image: require('../assets/products/SANITARYACCESSORY/sanitary_accessory.png')
     },
     {
         id: 'dairy-fittings',
@@ -112,7 +112,7 @@ export const products = [
         material: 'SS304 / SS316L',
         connectionType: 'Weld / Tri-Clamp',
         industries: ['Dairy', 'Beverage', 'Food'],
-        image: ""
+        image: require('../assets/products/DAIRYFITTING/dairy_fitting.png')
     }
 ];
 
