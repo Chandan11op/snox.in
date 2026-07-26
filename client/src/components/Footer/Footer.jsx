@@ -1,5 +1,5 @@
 import React from "react";
-import sj from "../../assets/sj.png";
+import sj from "../../assets/logo/sj.png";
 
 const Footer = () => {
   return (
@@ -10,9 +10,9 @@ const Footer = () => {
             SNOX &#169; {new Date().getFullYear()}. All Rights Reserved.
           </span>
           
-          <div className="flex items-center gap-3">
-            <span className="text-sm font-medium text-gray-400">Made By Subrat Jena</span>
-            <img src={sj} alt="SJ Logo" className="h-6 w-auto grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition-all duration-300" />
+          <div className="flex flex-col items-end gap-1">
+            <span className="text-sm font-medium text-gray-500">Designed and Developed by</span>
+            <span className="text-sm font-bold text-gray-800">Chandan Tiwad & Aman Chaurasiya</span>
           </div>
         </div>
       </div>

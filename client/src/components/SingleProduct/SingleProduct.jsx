@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import RelatedProducts from "./RelatedProducts/RelatedProducts";
 import { FaFacebookF, FaTwitter, FaLinkedinIn } from "react-icons/fa";
 import { useParams } from "react-router-dom";
-import { useGetProductQuery } from "../../state/api";
+import { getProductById } from "../../data/productData";
 import { motion } from "framer-motion";
 import IndustrialPlaceholder from "../ui/IndustrialPlaceholder";
 import MagneticButton from "../ui/MagneticButton";
@@ -10,7 +10,8 @@ import { Download, FileText, Check, Settings2, PackageCheck } from "lucide-react
 
 const SingleProduct = () => {
   const { id } = useParams();
-  const { data, isLoading } = useGetProductQuery(id);
+  const product = getProductById(id);
+  const isLoading = false;
   const [activeTab, setActiveTab] = useState("overview");
 
   useEffect(() => {
@@ -25,7 +26,7 @@ const SingleProduct = () => {
     );
   }
 
-  const product = data?.data?.[0]?.attributes;
+
   if (!product) return <div className="min-h-screen pt-32 px-6 text-center">Product not found.</div>;
 
   return (
@@ -39,9 +40,13 @@ const SingleProduct = () => {
           <motion.div 
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
-            className="sticky top-32 rounded-3xl overflow-hidden bg-industrial-50 border border-industrial-100 aspect-square flex items-center justify-center p-8"
+            className="sticky top-32 rounded-3xl overflow-hidden bg-white border border-slate-100 aspect-square flex flex-col items-center justify-center p-8 gap-4 shadow-sm"
           >
-            <IndustrialPlaceholder text="High-Res Product Render" className="w-full h-full rounded-2xl bg-white shadow-sm" />
+            {product.image ? (
+              <img src={product.image} alt={product.name} className="w-full h-full object-contain hover:scale-105 transition-transform duration-500" />
+            ) : (
+              <IndustrialPlaceholder text="Product Render" className="w-full h-full rounded-2xl bg-white shadow-sm" />
+            )}
           </motion.div>
 
           {/* Right: Product Meta */}
@@ -51,31 +56,31 @@ const SingleProduct = () => {
             className="flex flex-col pt-8"
           >
             <div className="flex items-center gap-3 mb-6">
-              <span className="text-xs font-bold text-industrial-500 bg-industrial-100 px-3 py-1 rounded-full uppercase tracking-widest">
-                {product.category?.title || "Component"}
+              <span className="text-xs font-bold text-slate-500 bg-slate-100 px-3 py-1 rounded-full uppercase tracking-widest">
+                {product.category || "Component"}
               </span>
               <span className="text-xs font-bold text-green-600 bg-green-50 px-3 py-1 rounded-full uppercase tracking-widest flex items-center gap-1">
-                <Check size={14} /> In Stock
+                <Check size={14} /> Available
               </span>
             </div>
 
-            <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-industrial-950 mb-6 leading-tight">
-              {product.title}
+            <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-slate-950 mb-6 leading-tight">
+              {product.name}
             </h1>
             
-            <p className="text-xl text-industrial-500 leading-relaxed mb-10">
-              {product.desc}
+            <p className="text-xl text-slate-500 leading-relaxed mb-10">
+              {product.shortDescription}
             </p>
 
-            <div className="flex flex-wrap items-center gap-6 py-8 border-y border-industrial-100 mb-10">
+            <div className="flex flex-wrap items-center gap-6 py-8 border-y border-slate-100 mb-10">
               <div className="flex flex-col">
-                <span className="text-sm text-industrial-400 font-medium uppercase tracking-widest mb-1">Unit Price</span>
-                <span className="text-3xl font-bold text-industrial-900">&#8377;{product.price}</span>
+                <span className="text-sm text-slate-400 font-medium uppercase tracking-widest mb-1">Material</span>
+                <span className="text-lg font-bold text-slate-700">{product.material}</span>
               </div>
-              <div className="w-px h-12 bg-industrial-200 hidden sm:block"></div>
+              <div className="w-px h-12 bg-slate-200 hidden sm:block"></div>
               <div className="flex flex-col">
-                <span className="text-sm text-industrial-400 font-medium uppercase tracking-widest mb-1">Material</span>
-                <span className="text-lg font-bold text-industrial-700">SS 316L (1.4404)</span>
+                <span className="text-sm text-slate-400 font-medium uppercase tracking-widest mb-1">Connection Type</span>
+                <span className="text-lg font-bold text-slate-700">{product.connectionType}</span>
               </div>
             </div>
 
@@ -122,21 +127,45 @@ const SingleProduct = () => {
           className="min-h-[300px]"
         >
           {activeTab === 'overview' && (
-             <div className="prose prose-lg max-w-4xl text-industrial-600">
-               <p className="text-xl leading-relaxed mb-6">Engineered for absolute purity, this {product.title.toLowerCase()} provides flawless fluid control while eliminating dead-legs and entrapment areas. It is designed specifically for CIP (Clean-In-Place) and SIP (Sterilize-In-Place) procedures, guaranteeing total system hygiene.</p>
+             <div className="prose prose-lg max-w-4xl text-slate-600">
+               <p className="text-xl leading-relaxed mb-6">{product.detailedDescription}</p>
+               
+               {/* Gallery Section */}
+               <div className="my-12">
+                 <h3 className="text-2xl font-bold text-slate-900 mb-6">Product Gallery & Details</h3>
+                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                   <div className="rounded-2xl overflow-hidden border border-slate-100 bg-slate-50 p-4">
+                      {product.image ? (
+                        <img src={product.image} alt={product.name} className="w-full h-48 object-contain rounded-xl mix-blend-multiply" />
+                      ) : (
+                        <div className="w-full h-48 bg-slate-200 rounded-xl"></div>
+                      )}
+                      <p className="mt-4 text-sm font-medium text-slate-500">Primary Product View. Designed for robust flow control.</p>
+                   </div>
+                   <div className="rounded-2xl overflow-hidden border border-slate-100 bg-slate-50 p-4">
+                      {product.image ? (
+                        <img src={product.image} alt={`${product.name} Alternate`} className="w-full h-48 object-contain rounded-xl scale-x-[-1] mix-blend-multiply" />
+                      ) : (
+                        <div className="w-full h-48 bg-slate-200 rounded-xl"></div>
+                      )}
+                      <p className="mt-4 text-sm font-medium text-slate-500">Alternate angle showcasing the premium sanitary finish.</p>
+                   </div>
+                 </div>
+               </div>
+
                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12">
                  <div className="flex gap-4">
-                   <Settings2 className="text-industrial-900 shrink-0 mt-1" />
+                   <Settings2 className="text-slate-900 shrink-0 mt-1" />
                    <div>
-                     <h4 className="font-bold text-industrial-900">Precision Machined</h4>
-                     <p className="text-sm">CNC crafted from forged 316L billets for maximum structural integrity.</p>
+                     <h4 className="font-bold text-slate-900">Precision Machined</h4>
+                     <p className="text-sm">CNC crafted for maximum structural integrity and leak-proof sealing.</p>
                    </div>
                  </div>
                  <div className="flex gap-4">
-                   <PackageCheck className="text-industrial-900 shrink-0 mt-1" />
+                   <PackageCheck className="text-slate-900 shrink-0 mt-1" />
                    <div>
-                     <h4 className="font-bold text-industrial-900">Surface Finish</h4>
-                     <p className="text-sm">Standard internal surface finish of Ra &lt; 0.4µm mechanically polished.</p>
+                     <h4 className="font-bold text-slate-900">Surface Finish</h4>
+                     <p className="text-sm">Standard internal surface finish perfectly suited for hygienic applications.</p>
                    </div>
                  </div>
                </div>
@@ -193,10 +222,10 @@ const SingleProduct = () => {
         </motion.div>
       </div>
 
-      <RelatedProducts 
+      {/* <RelatedProducts 
         productId={id}
-        categoryId={product.category?.data?.id}
-      />
+        categoryId={product.category}
+      /> */}
     </div>
   );
 };

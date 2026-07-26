@@ -1,7 +1,7 @@
 import React from "react";
-import iso9001 from "../../../assets/iso_9001.png";
-import iso14001 from "../../../assets/iso_14001.png";
-import iso45001 from "../../../assets/iso_45001.png";
+import iso9001 from "../../../assets/iso-images/iso_9001.png";
+import iso14001 from "../../../assets/iso-images/iso_14001.png";
+import iso45001 from "../../../assets/iso-images/iso_45001.png";
 import { motion } from "framer-motion";
 
 const Newsletter = () => {
@@ -34,9 +34,9 @@ const Newsletter = () => {
           transition={{ delay: 0.2 }}
           className="flex flex-wrap items-center justify-center gap-8 md:gap-16 opacity-80 hover:opacity-100 transition-opacity"
         >
-            <img src={iso9001} alt="ISO 9001" className="h-20 object-contain grayscale hover:grayscale-0 transition-all duration-300" />
-            <img src={iso14001} alt="ISO 14001" className="h-20 object-contain grayscale hover:grayscale-0 transition-all duration-300" />
-            <img src={iso45001} alt="ISO 45001" className="h-20 object-contain grayscale hover:grayscale-0 transition-all duration-300" />
+            <img src={iso9001} alt="ISO 9001" className="h-20 object-contain transition-all duration-300 hover:scale-105" />
+            <img src={iso14001} alt="ISO 14001" className="h-20 object-contain transition-all duration-300 hover:scale-105" />
+            <img src={iso45001} alt="ISO 45001" className="h-20 object-contain transition-all duration-300 hover:scale-105" />
         </motion.div>
       </div>
     </section>
