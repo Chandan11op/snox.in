@@ -1,73 +1,147 @@
-import { Link } from 'react-router-dom';
-import { motion } from 'framer-motion';
-import { products, categories } from '../data/productData';
 import { useState } from 'react';
+import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
+import { ArrowRight, Filter } from 'lucide-react';
+import { products, categories } from '../data/products';
 
 export default function Products() {
-  const [activeCategory, setActiveCategory] = useState('ALL');
+  const [activeCategory, setActiveCategory] = useState('All');
 
-  const filteredProducts = activeCategory === 'ALL' 
+  const filteredProducts = activeCategory === 'All' 
     ? products 
     : products.filter(p => p.category === activeCategory);
 
   return (
-    <main className="page-products" style={{ paddingTop: '100px', minHeight: '80vh' }}>
-      <section className="section container">
-        <div className="text-center mb-16">
-          <h1 className="h1 mb-4">Our Premium Catalogue</h1>
-          <p className="text-lg text-muted max-w-2xl mx-auto">
-            Explore our comprehensive range of high-performance industrial and sanitary fluid control solutions.
-          </p>
+    <div className="bg-surface min-h-screen pb-24">
+      {/* Header */}
+      <div className="bg-primary text-white pt-20 pb-16 relative overflow-hidden">
+        <div className="absolute inset-0 z-0">
+          <div className="absolute -top-24 -right-24 w-96 h-96 bg-accent opacity-20 rounded-full blur-3xl"></div>
         </div>
-
-        <div className="category-filter flex justify-center gap-4 mb-12 flex-wrap">
-          <button 
-            className={`btn ${activeCategory === 'ALL' ? 'btn-primary' : 'btn-outline'}`}
-            onClick={() => setActiveCategory('ALL')}
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+          <motion.h1 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="text-4xl md:text-6xl font-heading font-bold mb-6"
           >
-            All Products
-          </button>
-          {categories.map(cat => (
-            <button 
-              key={cat.id}
-              className={`btn ${activeCategory === cat.id ? 'btn-primary' : 'btn-outline'}`}
-              onClick={() => setActiveCategory(cat.id)}
-            >
-              {cat.name}
-            </button>
-          ))}
+            Product Catalogue
+          </motion.h1>
+          <motion.p 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2 }}
+            className="text-lg text-gray-300 max-w-2xl mx-auto"
+          >
+            Explore our comprehensive range of industrial valves, sanitary fittings, and flow control solutions engineered for excellence.
+          </motion.p>
         </div>
+      </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {filteredProducts.map((product, index) => (
-            <motion.div 
-              key={product.id}
-              className="product-card glass"
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.4, delay: index * 0.05 }}
-            >
-              <div className="product-image-container" style={{ padding: '2rem', background: 'var(--bg-secondary)', borderRadius: 'var(--radius-lg)' }}>
-                {/* Fallback image logic if require fails in Vite */}
-                <img 
-                  src={`/src/assets/products/${product.category}/${product.id}.png`} 
-                  alt={product.name} 
-                  onError={(e) => { e.target.onerror = null; e.target.src = '/src/assets/products/butterfly-valve/hero.png'; }}
-                  style={{ width: '100%', height: '200px', objectFit: 'contain' }}
-                />
-              </div>
-              <div className="product-info" style={{ padding: '1.5rem 0' }}>
-                <span className="text-xs text-muted" style={{ display: 'block', marginBottom: '0.5rem', fontWeight: 600 }}>{categories.find(c => c.id === product.category)?.name}</span>
-                <h3 className="h3 text-md mb-3">{product.name}</h3>
-                <p className="text-sm text-muted mb-6" style={{ minHeight: '3rem' }}>
-                  {product.shortDescription}
-                </p>
-                <Link to={`/products/${product.id}`} className="btn btn-outline" style={{ width: '100%' }}>View Details</Link>
-              </div>
-            </motion.div>
-          ))}
-        </div>
-      </section>
-    </main>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-12 flex flex-col md:flex-row gap-8">
+        
+        {/* Sidebar Filters */}
+        <aside className="w-full md:w-64 flex-shrink-0">
+          <div className="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 sticky top-24">
+            <div className="flex items-center space-x-2 mb-6 text-primary font-heading font-bold text-lg">
+              <Filter size={20} />
+              <span>Categories</span>
+            </div>
+            <ul className="space-y-2">
+              <li>
+                <button
+                  onClick={() => setActiveCategory('All')}
+                  className={`w-full text-left px-4 py-2 rounded-lg transition-colors font-medium ${
+                    activeCategory === 'All' ? 'bg-primary text-white' : 'text-gray-600 hover:bg-gray-50 hover:text-primary'
+                  }`}
+                >
+                  All Products
+                </button>
+              </li>
+              {categories.map(category => (
+                <li key={category}>
+                  <button
+                    onClick={() => setActiveCategory(category)}
+                    className={`w-full text-left px-4 py-2 rounded-lg transition-colors font-medium ${
+                      activeCategory === category ? 'bg-primary text-white' : 'text-gray-600 hover:bg-gray-50 hover:text-primary'
+                    }`}
+                  >
+                    {category}
+                  </button>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </aside>
+
+        {/* Product Grid */}
+        <main className="flex-1">
+          <motion.div 
+            layout
+            className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8"
+          >
+            {filteredProducts.map((product) => (
+              <motion.div 
+                layout
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.9 }}
+                transition={{ duration: 0.3 }}
+                key={product.id}
+                className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-premium transition-all duration-300 group border border-gray-100 flex flex-col"
+              >
+                <div className="relative h-56 bg-gray-50 p-6 flex items-center justify-center overflow-hidden">
+                  <div className="absolute inset-0 bg-accent/0 group-hover:bg-accent/10 transition-colors duration-500 rounded-full blur-2xl"></div>
+                  <motion.img 
+                    whileHover={{ scale: 1.1 }}
+                    src={product.images[0]} 
+                    alt={product.name} 
+                    className="w-full h-full object-contain mix-blend-multiply relative z-10 transition-transform duration-500"
+                  />
+                  <div className="absolute top-4 left-4 z-20">
+                    <span className="bg-primary/90 text-white backdrop-blur-sm text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide shadow-sm">
+                      {product.category}
+                    </span>
+                  </div>
+                </div>
+                
+                <div className="p-6 flex flex-col flex-1">
+                  <h3 className="text-xl font-heading font-bold text-primary mb-2 group-hover:text-accent transition-colors">
+                    {product.name}
+                  </h3>
+                  <p className="text-gray-600 text-sm mb-6 flex-1 line-clamp-2">
+                    {product.shortDescription}
+                  </p>
+                  <Link 
+                    to={`/products/${product.id}`}
+                    className="flex items-center justify-between w-full py-2 border-t border-gray-100 font-semibold text-primary group-hover:text-accent transition-colors mt-auto"
+                  >
+                    <span>View Specifications</span>
+                    <motion.div
+                      initial={{ x: 0 }}
+                      whileHover={{ x: 5 }}
+                    >
+                      <ArrowRight size={18} />
+                    </motion.div>
+                  </Link>
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
+
+          {filteredProducts.length === 0 && (
+            <div className="text-center py-20 bg-white rounded-2xl border border-gray-100">
+              <h3 className="text-2xl font-heading font-bold text-gray-400 mb-2">No products found</h3>
+              <p className="text-gray-500">Try selecting a different category.</p>
+              <button 
+                onClick={() => setActiveCategory('All')}
+                className="mt-6 text-accent font-semibold hover:underline"
+              >
+                Clear filters
+              </button>
+            </div>
+          )}
+        </main>
+      </div>
+    </div>
   );
 }
