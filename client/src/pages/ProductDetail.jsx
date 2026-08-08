@@ -1,87 +1,183 @@
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { getProductById, categories } from '../data/productData';
-import { ArrowLeft, CheckCircle2 } from 'lucide-react';
+import { ArrowLeft, CheckCircle2, Factory, ChevronRight } from 'lucide-react';
+import { products } from '../data/products';
+import { useState } from 'react';
 
 export default function ProductDetail() {
   const { id } = useParams();
-  const product = getProductById(id);
+  const navigate = useNavigate();
+  const product = products.find(p => p.id === id);
+  const [activeImage, setActiveImage] = useState(0);
 
   if (!product) {
     return (
-      <div className="container section text-center" style={{ paddingTop: '150px' }}>
-        <h2 className="h2 mb-4">Product Not Found</h2>
-        <Link to="/products" className="btn btn-primary">Back to Products</Link>
+      <div className="min-h-screen flex flex-col items-center justify-center bg-surface pt-20">
+        <h2 className="text-3xl font-heading font-bold text-primary mb-4">Product Not Found</h2>
+        <p className="text-gray-600 mb-8">The product you're looking for doesn't exist or has been removed.</p>
+        <button onClick={() => navigate('/products')} className="btn bg-primary text-white px-6 py-3 rounded-full hover:bg-primary-light">
+          Back to Catalogue
+        </button>
       </div>
     );
   }
 
-  const categoryName = categories.find(c => c.id === product.category)?.name;
-
   return (
-    <main className="product-detail-page" style={{ paddingTop: '120px', paddingBottom: '80px' }}>
-      <div className="container">
-        <Link to="/products" className="back-link flex items-center gap-2 mb-8" style={{ color: 'var(--text-muted)' }}>
-          <ArrowLeft size={16} /> Back to Catalog
-        </Link>
-        
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
-          <motion.div 
-            className="product-gallery glass"
-            initial={{ opacity: 0, x: -30 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6 }}
-            style={{ padding: '3rem', borderRadius: 'var(--radius-xl)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
-          >
-            <img 
-              src={`/src/assets/products/${product.category}/${product.id}.png`} 
-              alt={product.name} 
-              onError={(e) => { e.target.onerror = null; e.target.src = '/src/assets/products/butterfly-valve/hero.png'; }}
-              style={{ width: '100%', maxWidth: '500px', height: 'auto', filter: 'drop-shadow(0 20px 30px rgba(0,0,0,0.1))' }}
-            />
-          </motion.div>
-          
-          <motion.div 
-            className="product-info"
-            initial={{ opacity: 0, x: 30 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-          >
-            <span className="badge" style={{ display: 'inline-block', padding: '0.25rem 0.75rem', background: 'var(--bg-secondary)', color: 'var(--primary)', borderRadius: 'var(--radius-full)', fontSize: '0.875rem', fontWeight: 600, marginBottom: '1rem' }}>
-              {categoryName}
-            </span>
-            <h1 className="h2 mb-4">{product.name}</h1>
-            <p className="text-lg text-muted mb-8">{product.detailedDescription}</p>
+    <div className="bg-surface min-h-screen pb-24 pt-24">
+      {/* Breadcrumbs */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-8">
+        <nav className="flex text-sm text-gray-500 font-medium">
+          <Link to="/" className="hover:text-accent transition-colors">Home</Link>
+          <ChevronRight size={16} className="mx-2 mt-0.5" />
+          <Link to="/products" className="hover:text-accent transition-colors">Products</Link>
+          <ChevronRight size={16} className="mx-2 mt-0.5" />
+          <span className="text-primary">{product.name}</span>
+        </nav>
+      </div>
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <button 
+          onClick={() => navigate(-1)} 
+          className="flex items-center text-gray-500 hover:text-primary transition-colors mb-8 font-medium"
+        >
+          <ArrowLeft size={20} className="mr-2" />
+          Back
+        </button>
+
+        <div className="bg-white rounded-3xl shadow-sm border border-gray-100 overflow-hidden">
+          <div className="grid grid-cols-1 lg:grid-cols-2">
             
-            <div className="specs-grid grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-              <div className="spec-item">
-                <span className="text-xs text-muted uppercase tracking-wider" style={{ display: 'block', marginBottom: '0.25rem' }}>Material</span>
-                <span className="font-semibold">{product.material}</span>
-              </div>
-              <div className="spec-item">
-                <span className="text-xs text-muted uppercase tracking-wider" style={{ display: 'block', marginBottom: '0.25rem' }}>Connection</span>
-                <span className="font-semibold">{product.connectionType}</span>
-              </div>
+            {/* Image Gallery */}
+            <div className="p-8 lg:p-12 bg-gray-50 flex flex-col">
+              <motion.div 
+                className="flex-1 relative aspect-square bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden flex items-center justify-center p-8 mb-6 group cursor-zoom-in"
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.5 }}
+              >
+                <div className="absolute inset-0 bg-accent/0 group-hover:bg-accent/5 transition-colors duration-500 rounded-full blur-3xl"></div>
+                <motion.img 
+                  key={activeImage}
+                  src={product.images[activeImage]} 
+                  alt={product.name}
+                  className="w-full h-full object-contain mix-blend-multiply relative z-10"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  whileHover={{ scale: 1.1 }}
+                  transition={{ duration: 0.4 }}
+                />
+              </motion.div>
+              
+              {product.images.length > 1 && (
+                <div className="flex space-x-4 overflow-x-auto pb-2">
+                  {product.images.map((img, idx) => (
+                    <button 
+                      key={idx}
+                      onClick={() => setActiveImage(idx)}
+                      className={`relative w-24 h-24 flex-shrink-0 bg-white rounded-xl border-2 overflow-hidden ${
+                        activeImage === idx ? 'border-accent shadow-md' : 'border-transparent hover:border-gray-200'
+                      } transition-all`}
+                    >
+                      <img src={img} alt={`Thumbnail ${idx+1}`} className="w-full h-full object-contain p-2" />
+                    </button>
+                  ))}
+                </div>
+              )}
             </div>
 
-            <div className="features-list mb-8">
-              <h3 className="text-md font-semibold mb-4">Key Features</h3>
-              <ul className="flex flex-col gap-3">
-                {product.features.map((feature, index) => (
-                  <li key={index} className="flex items-center gap-3">
-                    <CheckCircle2 size={18} style={{ color: 'var(--accent)' }} />
-                    <span className="text-muted">{feature}</span>
-                  </li>
+            {/* Product Info */}
+            <div className="p-8 lg:p-12 flex flex-col justify-center">
+              <span className="inline-block bg-primary/10 text-primary font-bold px-3 py-1 rounded-full text-xs uppercase tracking-wider mb-4 w-fit">
+                {product.category}
+              </span>
+              
+              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-heading font-bold text-primary mb-4 leading-tight">
+                {product.name}
+              </h1>
+              
+              <p className="text-lg text-gray-600 mb-8 leading-relaxed">
+                {product.longDescription}
+              </p>
+              
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 mb-10">
+                <div>
+                  <h4 className="font-heading font-bold text-primary mb-4 flex items-center">
+                    <CheckCircle2 className="text-accent mr-2" size={20} />
+                    Key Features
+                  </h4>
+                  <ul className="space-y-2">
+                    {product.features.slice(0, 4).map((feature, idx) => (
+                      <li key={idx} className="flex items-start">
+                        <div className="w-1.5 h-1.5 rounded-full bg-accent mt-2 mr-3 flex-shrink-0"></div>
+                        <span className="text-gray-600 text-sm">{feature}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+                <div>
+                  <h4 className="font-heading font-bold text-primary mb-4 flex items-center">
+                    <Factory className="text-accent mr-2" size={20} />
+                    Industries
+                  </h4>
+                  <div className="flex flex-wrap gap-2">
+                    {product.industries.map((ind, idx) => (
+                      <span key={idx} className="bg-gray-100 text-gray-700 text-xs font-medium px-3 py-1 rounded-md">
+                        {ind}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+
+              <div className="mt-auto pt-8 border-t border-gray-100 flex flex-col sm:flex-row items-center space-y-4 sm:space-y-0 sm:space-x-4">
+                <Link to="/contact" className="w-full sm:w-auto text-center bg-primary text-white px-8 py-4 rounded-xl font-semibold shadow-premium hover:bg-primary-light transition-all transform hover:-translate-y-1">
+                  Request a Quote
+                </Link>
+                <a href="#specifications" className="w-full sm:w-auto text-center bg-white text-primary border border-gray-200 px-8 py-4 rounded-xl font-semibold hover:bg-gray-50 transition-colors">
+                  View Specifications
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Technical Specifications Section */}
+        <div id="specifications" className="mt-16 bg-white rounded-3xl shadow-sm border border-gray-100 p-8 lg:p-12 scroll-mt-32">
+          <h2 className="text-3xl font-heading font-bold text-primary mb-10 text-center">Technical Specifications</h2>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+            <div>
+              <h3 className="text-xl font-heading font-bold text-primary mb-6 border-b border-gray-100 pb-2">Technical Details</h3>
+              <dl className="space-y-4">
+                {Object.entries(product.specifications).map(([key, value], idx) => (
+                  <div key={idx} className="flex flex-col sm:flex-row sm:justify-between py-3 border-b border-gray-50">
+                    <dt className="text-gray-500 font-medium capitalize mb-1 sm:mb-0">
+                      {key.replace(/([A-Z])/g, ' $1').trim()}
+                    </dt>
+                    <dd className="text-primary font-semibold text-right">{value}</dd>
+                  </div>
                 ))}
-              </ul>
+              </dl>
             </div>
             
-            <div className="action-buttons flex gap-4">
-              <Link to="/contact" className="btn btn-primary" style={{ padding: '0.75rem 2rem' }}>Request Quote</Link>
+            <div>
+              <h3 className="text-xl font-heading font-bold text-primary mb-6 border-b border-gray-100 pb-2">Available Variants</h3>
+              <div className="flex flex-wrap gap-3">
+                {product.variants.map((variant, idx) => (
+                  <div key={idx} className="bg-surface border border-gray-200 text-gray-700 px-4 py-2 rounded-lg font-medium text-sm">
+                    {variant}
+                  </div>
+                ))}
+              </div>
+
+              <h3 className="text-xl font-heading font-bold text-primary mt-10 mb-6 border-b border-gray-100 pb-2">Packaging & Usage</h3>
+              <p className="text-gray-600 text-sm mb-4"><strong className="text-primary block mb-1">Packaging:</strong> {product.packaging}</p>
+              <p className="text-gray-600 text-sm"><strong className="text-primary block mb-1">Usage:</strong> {product.usage}</p>
             </div>
-          </motion.div>
+          </div>
         </div>
+
       </div>
-    </main>
+    </div>
   );
 }

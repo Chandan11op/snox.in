@@ -1,81 +1,127 @@
 import { motion } from 'framer-motion';
+import { Target, Lightbulb, Users, Award } from 'lucide-react';
+import tcBallValve from '../assets/products/BALLVALVE/tc-ball-valve.jpg'; // Using as a placeholder for manufacturing visual
 
 export default function About() {
+  const values = [
+    {
+      icon: <Target className="text-accent" size={32} />,
+      title: 'Precision Focus',
+      desc: 'Every micron matters. Our engineering standards leave no room for error.'
+    },
+    {
+      icon: <Lightbulb className="text-accent" size={32} />,
+      title: 'Continuous Innovation',
+      desc: 'Investing heavily in R&D to bring smarter, more efficient fluid control.'
+    },
+    {
+      icon: <Users className="text-accent" size={32} />,
+      title: 'Client Partnership',
+      desc: 'We do not just sell valves; we build long-term engineering partnerships.'
+    },
+    {
+      icon: <Award className="text-accent" size={32} />,
+      title: 'Certified Excellence',
+      desc: 'Committed to exceeding global quality benchmarks (ISO, FDA, 3A).'
+    }
+  ];
+
   return (
-    <main className="page-about" style={{ paddingTop: '120px', paddingBottom: '80px' }}>
-      <div className="container">
+    <div className="bg-surface min-h-screen pb-24">
+      {/* Hero Section */}
+      <div className="bg-primary text-white pt-32 pb-24 relative overflow-hidden">
+        <div className="absolute inset-0 z-0">
+          <div className="absolute top-0 right-0 w-full h-full bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10 mix-blend-overlay"></div>
+          <motion.div 
+            className="absolute -top-40 -left-40 w-96 h-96 bg-accent opacity-20 rounded-full blur-[100px]"
+            animate={{ scale: [1, 1.2, 1], opacity: [0.1, 0.2, 0.1] }}
+            transition={{ duration: 8, repeat: Infinity }}
+          />
+        </div>
         
-        {/* Story Section */}
-        <section className="mb-24 text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+          <motion.h1 
+            initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.8 }}
+            className="text-5xl md:text-7xl font-heading font-bold mb-6"
           >
-            <h1 className="h1 mb-6">Our Legacy of Precision</h1>
-            <p className="text-lg text-muted max-w-2xl mx-auto mb-12">
-              Since 2005, Snox Industrial has been at the forefront of engineering excellence, delivering uncompromising fluid control solutions for the world's most critical applications in pharmaceuticals, biotechnology, and food processing.
-            </p>
-          </motion.div>
-        </section>
-
-        {/* Mission & Vision */}
-        <section className="mb-24 grid grid-cols-1 md:grid-cols-2 gap-8">
-          <motion.div 
-            className="glass" style={{ padding: '3rem', borderRadius: 'var(--radius-xl)' }}
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
+            Engineering <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-accent">Excellence</span>
+          </motion.h1>
+          <motion.p 
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed"
           >
-            <h2 className="h3 mb-4">Our Mission</h2>
-            <p className="text-muted">
-              To engineer and manufacture the highest quality sanitary fluid handling components that ensure total integrity, safety, and efficiency for process industries globally.
-            </p>
-          </motion.div>
-          <motion.div 
-            className="glass" style={{ padding: '3rem', borderRadius: 'var(--radius-xl)', background: 'var(--primary)', color: 'white' }}
-            initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-          >
-            <h2 className="h3 mb-4" style={{ color: 'white' }}>Our Vision</h2>
-            <p style={{ color: 'rgba(255,255,255,0.8)' }}>
-              To be the globally recognized benchmark for precision engineering and innovation in sanitary and industrial fluid control technologies.
-            </p>
-          </motion.div>
-        </section>
-
-        {/* Infrastructure & Manufacturing */}
-        <section className="mb-24">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-          >
-            <h2 className="h2 mb-8 text-center">World-Class Infrastructure</h2>
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-              <div>
-                <p className="text-lg mb-6">
-                  Our state-of-the-art manufacturing facility spans over 50,000 sq.ft and is equipped with advanced CNC machinery, automated welding systems, and rigorous testing laboratories.
-                </p>
-                <ul className="flex flex-col gap-4">
-                  <li className="flex items-center gap-3"><span className="text-primary font-bold">✓</span> CNC Turning & Milling Centers</li>
-                  <li className="flex items-center gap-3"><span className="text-primary font-bold">✓</span> Orbital Welding Technologies</li>
-                  <li className="flex items-center gap-3"><span className="text-primary font-bold">✓</span> Electro-polishing & Surface Treatment</li>
-                  <li className="flex items-center gap-3"><span className="text-primary font-bold">✓</span> ISO Class 7 Cleanroom Assembly</li>
-                </ul>
-              </div>
-              <div className="glass" style={{ height: '300px', borderRadius: 'var(--radius-xl)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--text-muted)' }}>
-                [ Infrastructure Image Placeholder ]
-              </div>
-            </div>
-          </motion.div>
-        </section>
-
+            For over two decades, SNOX has been at the forefront of industrial fluid control, delivering uncompromising quality to the world's most demanding sectors.
+          </motion.p>
+        </div>
       </div>
-    </main>
+
+      {/* Story Section */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-10 relative z-20">
+        <div className="bg-white rounded-3xl shadow-premium border border-gray-100 p-8 md:p-16">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <motion.div 
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+            >
+              <h2 className="text-3xl md:text-4xl font-heading font-bold text-primary mb-6">Our Legacy of Quality</h2>
+              <p className="text-gray-600 text-lg leading-relaxed mb-6">
+                Founded with a singular vision to redefine precision engineering in fluid mechanics, SNOX has grown from a specialized local workshop to a globally recognized manufacturer of premium valves and fittings.
+              </p>
+              <p className="text-gray-600 text-lg leading-relaxed">
+                Our state-of-the-art manufacturing facility combines advanced CNC machining, rigorous metallurgical testing, and uncompromising quality assurance protocols. Whether it's a high-pressure chemical pipeline or an ultra-hygienic pharmaceutical process, SNOX products are trusted where failure is not an option.
+              </p>
+            </motion.div>
+            
+            <motion.div 
+              className="relative aspect-square md:aspect-video lg:aspect-square rounded-2xl overflow-hidden shadow-lg border-4 border-white"
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+            >
+              <div className="absolute inset-0 bg-primary/20 mix-blend-multiply z-10"></div>
+              <img 
+                src={tcBallValve} 
+                alt="SNOX Manufacturing" 
+                className="w-full h-full object-cover scale-110"
+              />
+            </motion.div>
+          </div>
+        </div>
+      </div>
+
+      {/* Core Values */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-32">
+        <div className="text-center mb-16">
+          <h2 className="text-4xl font-heading font-bold text-primary mb-4">Core Values</h2>
+          <p className="text-gray-600 max-w-2xl mx-auto text-lg">The principles that drive our engineering and shape our culture.</p>
+        </div>
+        
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {values.map((val, idx) => (
+            <motion.div 
+              key={idx}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: idx * 0.1 }}
+              className="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 hover:shadow-premium transition-shadow group"
+            >
+              <div className="w-16 h-16 bg-surface rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                {val.icon}
+              </div>
+              <h3 className="text-xl font-heading font-bold text-primary mb-3">{val.title}</h3>
+              <p className="text-gray-600">{val.desc}</p>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </div>
   );
 }

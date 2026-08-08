@@ -1,11 +1,13 @@
 import Hero from '../sections/Home/Hero';
-import Features from '../sections/Home/Features';
+import ProductsPreview from '../sections/Home/ProductsPreview';
+import Overview from '../sections/Home/Overview';
 
 export default function Home() {
   return (
-    <main>
+    <>
       <Hero />
-      <Features />
-    </main>
+      <Overview />
+      <ProductsPreview />
+    </>
   );
 }
