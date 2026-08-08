@@ -1,7 +1,6 @@
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { ArrowRight, ChevronDown } from 'lucide-react';
-import tcBallValve from '../../assets/products/BALLVALVE/tc-ball-valve.jpg';
 
 export default function Hero() {
   return (
@@ -40,7 +39,7 @@ export default function Hero() {
           </motion.div>
           
           <motion.h1 
-            className="text-5xl sm:text-6xl lg:text-7xl font-heading font-bold leading-tight mb-6"
+            className="text-5xl sm:text-6xl lg:text-7xl font-display font-bold leading-tight mb-6 text-white"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
@@ -90,11 +89,12 @@ export default function Hero() {
             {/* Center Image */}
             <motion.div 
               className="absolute inset-8 rounded-full overflow-hidden border-4 border-white/10 shadow-2xl bg-white flex items-center justify-center"
+              animate={{ y: [0, -15, 0] }}
+              transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
               whileHover={{ scale: 1.05 }}
-              transition={{ type: "spring", stiffness: 300 }}
             >
               <img 
-                src={tcBallValve} 
+                src="/assets/products/BALLVALVE/tc-ball-valve.jpg" 
                 alt="Premium Industrial Valve" 
                 className="w-full h-full object-cover p-8"
               />

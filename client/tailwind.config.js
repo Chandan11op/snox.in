@@ -8,28 +8,31 @@ export default {
     extend: {
       colors: {
         primary: {
-          DEFAULT: '#0A2540', // Deep Blue
-          light: '#11355F',
-          dark: '#05182D',
+          DEFAULT: '#0F172A', // Slate 900
+          light: '#1E293B',   // Slate 800
+          dark: '#020617',    // Slate 950
         },
         accent: {
-          DEFAULT: '#00D4FF', // Electric blue accent
+          DEFAULT: '#F59E0B', // Precision Amber/Orange
+          hover: '#D97706',
         },
-        surface: {
-          DEFAULT: '#F8FAFC', // Light Grey
-          dark: '#E2E8F0',
+        industrial: {
+          steel: '#94A3B8',
+          silver: '#E2E8F0',
+          chrome: '#F8FAFC',
         }
       },
       fontFamily: {
         sans: ['Inter', 'sans-serif'],
-        heading: ['Outfit', 'sans-serif'],
+        display: ['Syncopate', 'sans-serif'], // For industrial headings
       },
       boxShadow: {
-        'premium': '0 10px 40px -10px rgba(0,0,0,0.08)',
-        'glow': '0 0 20px rgba(0, 212, 255, 0.3)',
+        'premium': '0 10px 40px -10px rgba(0,0,0,0.1)',
+        'inner-glow': 'inset 0 2px 4px 0 rgba(255, 255, 255, 0.05)',
       },
       backgroundImage: {
-        'premium-gradient': 'linear-gradient(135deg, #0A2540 0%, #11355F 100%)',
+        'industrial-gradient': 'linear-gradient(to right, #0F172A, #1E293B)',
+        'steel-gradient': 'linear-gradient(135deg, #F8FAFC 0%, #E2E8F0 100%)',
       }
     },
   },

@@ -20,14 +20,14 @@ function App() {
   }, [location.pathname]);
 
   return (
-    <div className="min-h-screen flex flex-col font-sans bg-surface selection:bg-accent selection:text-white">
+    <div className="min-h-screen flex flex-col font-sans bg-industrial-chrome selection:bg-accent selection:text-white">
       <AnimatePresence mode="wait">
         {loading ? (
           <LoadingScreen key="loading" onComplete={() => setLoading(false)} />
         ) : (
           <div key="app-content" className="flex flex-col min-h-screen w-full">
             <Navbar />
-            <main className="flex-grow pt-24">
+            <main className="flex-grow">
               <AnimatePresence mode="wait">
                 <Routes location={location} key={location.pathname}>
                   <Route path="/" element={<Home />} />

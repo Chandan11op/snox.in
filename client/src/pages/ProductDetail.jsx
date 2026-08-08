@@ -1,8 +1,8 @@
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ArrowLeft, CheckCircle2, Factory, ChevronRight } from 'lucide-react';
-import { products } from '../data/products';
-import { useState } from 'react';
+import { productsData as products } from '../data/products';
+import { useState, useEffect } from 'react';
 
 export default function ProductDetail() {
   const { id } = useParams();
@@ -10,10 +10,20 @@ export default function ProductDetail() {
   const product = products.find(p => p.id === id);
   const [activeImage, setActiveImage] = useState(0);
 
+  useEffect(() => {
+    if (product) {
+      document.title = product.seoTitle || `${product.name} | SNOX`;
+      const metaDesc = document.querySelector('meta[name="description"]');
+      if (metaDesc) {
+        metaDesc.setAttribute('content', product.seoDescription || product.description);
+      }
+    }
+  }, [product]);
+
   if (!product) {
     return (
-      <div className="min-h-screen flex flex-col items-center justify-center bg-surface pt-20">
-        <h2 className="text-3xl font-heading font-bold text-primary mb-4">Product Not Found</h2>
+      <div className="min-h-screen flex flex-col items-center justify-center bg-industrial-chrome pt-20">
+        <h2 className="text-3xl font-display font-bold text-primary mb-4">Product Not Found</h2>
         <p className="text-gray-600 mb-8">The product you're looking for doesn't exist or has been removed.</p>
         <button onClick={() => navigate('/products')} className="btn bg-primary text-white px-6 py-3 rounded-full hover:bg-primary-light">
           Back to Catalogue
@@ -23,7 +33,7 @@ export default function ProductDetail() {
   }
 
   return (
-    <div className="bg-surface min-h-screen pb-24 pt-24">
+    <div className="bg-industrial-chrome min-h-screen pb-24 pt-24">
       {/* Breadcrumbs */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-8">
         <nav className="flex text-sm text-gray-500 font-medium">
@@ -91,17 +101,17 @@ export default function ProductDetail() {
                 {product.category}
               </span>
               
-              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-heading font-bold text-primary mb-4 leading-tight">
+              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-display font-bold text-primary mb-4 leading-tight">
                 {product.name}
               </h1>
               
               <p className="text-lg text-gray-600 mb-8 leading-relaxed">
-                {product.longDescription}
+                {product.description}
               </p>
               
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 mb-10">
                 <div>
-                  <h4 className="font-heading font-bold text-primary mb-4 flex items-center">
+                  <h4 className="font-display font-bold text-primary mb-4 flex items-center">
                     <CheckCircle2 className="text-accent mr-2" size={20} />
                     Key Features
                   </h4>
@@ -115,14 +125,14 @@ export default function ProductDetail() {
                   </ul>
                 </div>
                 <div>
-                  <h4 className="font-heading font-bold text-primary mb-4 flex items-center">
+                  <h4 className="font-display font-bold text-primary mb-4 flex items-center">
                     <Factory className="text-accent mr-2" size={20} />
                     Industries
                   </h4>
                   <div className="flex flex-wrap gap-2">
-                    {product.industries.map((ind, idx) => (
+                    {product.applications && product.applications.map((app, idx) => (
                       <span key={idx} className="bg-gray-100 text-gray-700 text-xs font-medium px-3 py-1 rounded-md">
-                        {ind}
+                        {app}
                       </span>
                     ))}
                   </div>
@@ -143,36 +153,34 @@ export default function ProductDetail() {
 
         {/* Technical Specifications Section */}
         <div id="specifications" className="mt-16 bg-white rounded-3xl shadow-sm border border-gray-100 p-8 lg:p-12 scroll-mt-32">
-          <h2 className="text-3xl font-heading font-bold text-primary mb-10 text-center">Technical Specifications</h2>
+          <h2 className="text-3xl font-display font-bold text-primary mb-10 text-center">Technical Specifications</h2>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
             <div>
-              <h3 className="text-xl font-heading font-bold text-primary mb-6 border-b border-gray-100 pb-2">Technical Details</h3>
-              <dl className="space-y-4">
-                {Object.entries(product.specifications).map(([key, value], idx) => (
-                  <div key={idx} className="flex flex-col sm:flex-row sm:justify-between py-3 border-b border-gray-50">
-                    <dt className="text-gray-500 font-medium capitalize mb-1 sm:mb-0">
-                      {key.replace(/([A-Z])/g, ' $1').trim()}
-                    </dt>
-                    <dd className="text-primary font-semibold text-right">{value}</dd>
-                  </div>
-                ))}
-              </dl>
-            </div>
-            
-            <div>
-              <h3 className="text-xl font-heading font-bold text-primary mb-6 border-b border-gray-100 pb-2">Available Variants</h3>
-              <div className="flex flex-wrap gap-3">
-                {product.variants.map((variant, idx) => (
-                  <div key={idx} className="bg-surface border border-gray-200 text-gray-700 px-4 py-2 rounded-lg font-medium text-sm">
-                    {variant}
-                  </div>
-                ))}
+              <h3 className="text-xl font-display font-bold text-primary mb-6 border-b border-gray-100 pb-2">Technical Details</h3>
+              <div className="overflow-x-auto">
+                <table className="w-full text-left border-collapse">
+                  <tbody>
+                    {Object.entries(product.specifications).map(([key, value], idx) => (
+                      <tr key={idx} className={`${idx % 2 === 0 ? 'bg-gray-50' : 'bg-white'} border-b border-gray-100 hover:bg-gray-100 transition-colors`}>
+                        <th className="py-4 px-6 text-gray-700 font-semibold w-1/3 border-r border-gray-100">
+                          {key.replace(/([A-Z])/g, ' $1').trim()}
+                        </th>
+                        <td className="py-4 px-6 text-primary font-bold">
+                          {value}
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
               </div>
-
-              <h3 className="text-xl font-heading font-bold text-primary mt-10 mb-6 border-b border-gray-100 pb-2">Packaging & Usage</h3>
-              <p className="text-gray-600 text-sm mb-4"><strong className="text-primary block mb-1">Packaging:</strong> {product.packaging}</p>
-              <p className="text-gray-600 text-sm"><strong className="text-primary block mb-1">Usage:</strong> {product.usage}</p>
+            </div>
+            <div>
+              <h3 className="text-xl font-display font-bold text-primary mb-6 border-b border-gray-100 pb-2">Industrial Applications</h3>
+              <p className="text-gray-600 text-sm mb-4">
+                <strong className="text-primary block mb-1">Applications:</strong> 
+                {product.applications ? product.applications.join(', ') : 'Industrial use.'}
+              </p>
             </div>
           </div>
         </div>

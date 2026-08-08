@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
-import { products } from '../../data/products';
+import { productsData as products } from '../../data/products';
 
 export default function ProductsPreview() {
   // Take first 3 products for preview
@@ -27,12 +27,12 @@ export default function ProductsPreview() {
   };
 
   return (
-    <section className="py-24 bg-surface relative">
+    <section className="py-24 bg-industrial-chrome relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         <div className="flex flex-col md:flex-row justify-between items-end mb-16">
           <div className="max-w-2xl">
-            <h2 className="text-4xl md:text-5xl font-heading font-bold text-primary mb-4">
+            <h2 className="text-4xl md:text-5xl font-display font-bold text-primary mb-4">
               Premium Product Range
             </h2>
             <p className="text-lg text-gray-600">
@@ -59,7 +59,9 @@ export default function ProductsPreview() {
             <motion.div 
               key={product.id}
               variants={cardVariants}
-              className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-premium transition-shadow duration-300 group border border-gray-100"
+              whileHover={{ y: -15, scale: 1.02, rotateX: 1, rotateY: -1 }}
+              transition={{ type: "spring", stiffness: 300, damping: 20 }}
+              className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-premium transition-shadow duration-300 group border border-gray-100 hover:border-accent/30"
             >
               <div className="relative h-64 overflow-hidden bg-gray-50 flex items-center justify-center p-8">
                 <motion.div
@@ -84,11 +86,11 @@ export default function ProductsPreview() {
               </div>
               
               <div className="p-8">
-                <h3 className="text-2xl font-heading font-bold text-primary mb-3 group-hover:text-accent transition-colors">
+                <h3 className="text-2xl font-display font-bold text-primary mb-3 group-hover:text-accent transition-colors">
                   {product.name}
                 </h3>
                 <p className="text-gray-600 mb-6 line-clamp-2">
-                  {product.shortDescription}
+                  {product.description}
                 </p>
                 <Link 
                   to={`/products/${product.id}`}

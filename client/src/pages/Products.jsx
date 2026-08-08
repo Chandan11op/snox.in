@@ -2,7 +2,10 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Filter } from 'lucide-react';
-import { products, categories } from '../data/products';
+import { productsData } from '../data/products';
+
+const products = productsData;
+const categories = Array.from(new Set(products.map(p => p.category)));
 
 export default function Products() {
   const [activeCategory, setActiveCategory] = useState('All');
@@ -12,17 +15,19 @@ export default function Products() {
     : products.filter(p => p.category === activeCategory);
 
   return (
-    <div className="bg-surface min-h-screen pb-24">
+    <div className="bg-industrial-chrome min-h-screen pb-24">
       {/* Header */}
       <div className="bg-primary text-white pt-20 pb-16 relative overflow-hidden">
         <div className="absolute inset-0 z-0">
-          <div className="absolute -top-24 -right-24 w-96 h-96 bg-accent opacity-20 rounded-full blur-3xl"></div>
+          <img src="/assets/images/hero-bg.png" alt="Industrial Background" className="w-full h-full object-cover opacity-30 mix-blend-overlay" />
+          <div className="absolute inset-0 bg-gradient-to-t from-primary via-primary/50 to-transparent"></div>
+          <div className="absolute -top-24 -right-24 w-96 h-96 bg-accent opacity-30 rounded-full blur-3xl"></div>
         </div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
           <motion.h1 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="text-4xl md:text-6xl font-heading font-bold mb-6"
+            className="text-4xl md:text-6xl font-display font-bold mb-6"
           >
             Product Catalogue
           </motion.h1>
@@ -42,7 +47,7 @@ export default function Products() {
         {/* Sidebar Filters */}
         <aside className="w-full md:w-64 flex-shrink-0">
           <div className="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 sticky top-24">
-            <div className="flex items-center space-x-2 mb-6 text-primary font-heading font-bold text-lg">
+            <div className="flex items-center space-x-2 mb-6 text-primary font-display font-bold text-lg">
               <Filter size={20} />
               <span>Categories</span>
             </div>
@@ -85,9 +90,10 @@ export default function Products() {
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.9 }}
-                transition={{ duration: 0.3 }}
+                whileHover={{ y: -15, scale: 1.02, rotateX: 1, rotateY: -1 }}
+                transition={{ type: "spring", stiffness: 300, damping: 20 }}
                 key={product.id}
-                className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-premium transition-all duration-300 group border border-gray-100 flex flex-col"
+                className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-premium transition-all duration-300 group border border-gray-100 hover:border-accent/30 flex flex-col"
               >
                 <div className="relative h-56 bg-gray-50 p-6 flex items-center justify-center overflow-hidden">
                   <div className="absolute inset-0 bg-accent/0 group-hover:bg-accent/10 transition-colors duration-500 rounded-full blur-2xl"></div>
@@ -105,11 +111,11 @@ export default function Products() {
                 </div>
                 
                 <div className="p-6 flex flex-col flex-1">
-                  <h3 className="text-xl font-heading font-bold text-primary mb-2 group-hover:text-accent transition-colors">
+                  <h3 className="text-xl font-display font-bold text-primary mb-2 group-hover:text-accent transition-colors">
                     {product.name}
                   </h3>
                   <p className="text-gray-600 text-sm mb-6 flex-1 line-clamp-2">
-                    {product.shortDescription}
+                    {product.description}
                   </p>
                   <Link 
                     to={`/products/${product.id}`}
@@ -130,7 +136,7 @@ export default function Products() {
 
           {filteredProducts.length === 0 && (
             <div className="text-center py-20 bg-white rounded-2xl border border-gray-100">
-              <h3 className="text-2xl font-heading font-bold text-gray-400 mb-2">No products found</h3>
+              <h3 className="text-2xl font-display font-bold text-gray-400 mb-2">No products found</h3>
               <p className="text-gray-500">Try selecting a different category.</p>
               <button 
                 onClick={() => setActiveCategory('All')}

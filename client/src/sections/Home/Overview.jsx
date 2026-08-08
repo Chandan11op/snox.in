@@ -39,7 +39,7 @@ export default function Overview() {
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.8 }}
           >
-            <h2 className="text-4xl md:text-5xl font-heading font-bold text-primary mb-6">
+            <h2 className="text-4xl md:text-5xl font-display font-bold text-primary mb-6">
               Setting the Standard in <span className="text-accent">Flow Control</span>
             </h2>
             <p className="text-lg text-gray-600 mb-8 leading-relaxed">
@@ -48,17 +48,17 @@ export default function Overview() {
             
             <div className="flex items-center space-x-8 mb-10">
               <div>
-                <span className="block text-4xl font-heading font-bold text-primary mb-1">20+</span>
+                <span className="block text-4xl font-display font-bold text-primary mb-1">20+</span>
                 <span className="text-sm font-medium text-gray-500 uppercase tracking-wide">Years Exp.</span>
               </div>
               <div className="w-px h-12 bg-gray-200"></div>
               <div>
-                <span className="block text-4xl font-heading font-bold text-primary mb-1">5k+</span>
+                <span className="block text-4xl font-display font-bold text-primary mb-1">5k+</span>
                 <span className="text-sm font-medium text-gray-500 uppercase tracking-wide">Clients</span>
               </div>
               <div className="w-px h-12 bg-gray-200"></div>
               <div>
-                <span className="block text-4xl font-heading font-bold text-primary mb-1">100%</span>
+                <span className="block text-4xl font-display font-bold text-primary mb-1">100%</span>
                 <span className="text-sm font-medium text-gray-500 uppercase tracking-wide">Tested</span>
               </div>
             </div>
@@ -72,12 +72,12 @@ export default function Overview() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-50px" }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="bg-surface p-8 rounded-2xl border border-gray-100 hover:border-accent/30 transition-colors group"
+                className="bg-industrial-chrome p-8 rounded-2xl border border-gray-100 hover:border-accent/30 transition-colors group"
               >
                 <div className="w-14 h-14 bg-white rounded-xl shadow-sm flex items-center justify-center text-accent mb-6 group-hover:scale-110 transition-transform duration-300">
                   {feature.icon}
                 </div>
-                <h3 className="text-xl font-heading font-bold text-primary mb-3">
+                <h3 className="text-xl font-display font-bold text-primary mb-3">
                   {feature.title}
                 </h3>
                 <p className="text-gray-600 text-sm leading-relaxed">

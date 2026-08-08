@@ -6,11 +6,12 @@
 
 @layer base {
   html, body {
-    @apply antialiased text-gray-800 bg-surface selection:bg-accent selection:text-white;
+    @apply antialiased text-gray-800 bg-[#F8FAFC] selection:bg-accent selection:text-white;
   }
 
   h1, h2, h3, h4, h5, h6 {
-    @apply font-heading tracking-tight text-primary;
+    font-family: 'Syncopate', sans-serif;
+    @apply tracking-tight text-primary;
   }
   
   p, span, a, div {
@@ -54,7 +55,7 @@
   }
   
   ::-webkit-scrollbar-track {
-    background: theme('colors.surface.DEFAULT');
+    background: theme('colors.industrial.chrome');
   }
   
   ::-webkit-scrollbar-thumb {

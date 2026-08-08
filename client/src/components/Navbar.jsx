@@ -26,8 +26,8 @@ export default function Navbar() {
 
   return (
     <header 
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled ? 'glass py-3' : 'bg-transparent py-5'
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+        scrolled ? 'bg-primary-dark/90 backdrop-blur-md shadow-premium py-4' : 'bg-transparent py-6'
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center">
@@ -40,8 +40,8 @@ export default function Navbar() {
             <Link 
               key={link.title} 
               to={link.path} 
-              className={`relative font-medium transition-colors hover:text-accent ${
-                location.pathname === link.path ? 'text-accent' : 'text-primary'
+              className={`relative font-medium tracking-wide transition-colors hover:text-accent ${
+                location.pathname === link.path ? 'text-accent' : 'text-white'
               }`}
             >
               {link.title}
@@ -55,14 +55,14 @@ export default function Navbar() {
           ))}
           <Link 
             to="/contact" 
-            className="bg-primary text-white px-6 py-2 rounded-full font-medium shadow-premium hover:bg-primary-light transition-colors transform hover:-translate-y-0.5 duration-200"
+            className="bg-accent text-primary-dark px-8 py-2.5 rounded-none font-bold uppercase tracking-wider shadow-premium hover:bg-accent-hover transition-colors transform hover:-translate-y-0.5 duration-200"
           >
             Get Quote
           </Link>
         </nav>
 
         <button 
-          className="md:hidden text-primary focus:outline-none" 
+          className="md:hidden text-white focus:outline-none" 
           onClick={() => setMobileOpen(!mobileOpen)}
           aria-label="Toggle Menu"
         >
@@ -93,7 +93,7 @@ export default function Navbar() {
             ))}
             <Link 
               to="/contact" 
-              className="bg-primary text-white text-center py-3 rounded-xl font-medium mt-4 shadow-md"
+              className="bg-accent text-primary-dark text-center py-4 rounded-none font-bold uppercase mt-4 shadow-md"
               onClick={() => setMobileOpen(false)}
             >
               Get Quote

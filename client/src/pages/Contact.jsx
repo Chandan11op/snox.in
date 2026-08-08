@@ -50,7 +50,7 @@ export default function Contact() {
   ];
 
   return (
-    <div className="bg-surface min-h-screen pb-24 pt-24">
+    <div className="bg-industrial-chrome min-h-screen pb-24 pt-24">
       {/* Header */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16 text-center">
         <motion.div
@@ -59,7 +59,7 @@ export default function Contact() {
           transition={{ duration: 0.6 }}
         >
           <span className="inline-block text-accent font-bold tracking-wider uppercase text-sm mb-4">Get in Touch</span>
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-primary mb-6">Let's Discuss Your Needs</h1>
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold text-primary mb-6">Let's Discuss Your Needs</h1>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
             Our engineering team is ready to assist you with product selection, custom manufacturing requests, or technical support.
           </p>
@@ -79,11 +79,11 @@ export default function Contact() {
                 transition={{ duration: 0.5, delay: idx * 0.1 }}
                 className="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 flex items-start space-x-6 hover:shadow-md transition-shadow group"
               >
-                <div className="w-12 h-12 bg-surface rounded-full flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
+                <div className="w-12 h-12 bg-industrial-chrome rounded-full flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
                   {info.icon}
                 </div>
                 <div>
-                  <h4 className="font-heading font-bold text-primary text-xl mb-1">{info.title}</h4>
+                  <h4 className="font-display font-bold text-primary text-xl mb-1">{info.title}</h4>
                   <p className="text-gray-900 font-medium mb-1">{info.detail}</p>
                   <p className="text-gray-500 text-sm">{info.subDetail}</p>
                 </div>
@@ -113,7 +113,7 @@ export default function Contact() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <h3 className="text-2xl font-heading font-bold text-primary mb-8">Send us a Message</h3>
+            <h3 className="text-2xl font-display font-bold text-primary mb-8">Send us a Message</h3>
             
             {isSubmitted ? (
               <motion.div 
@@ -145,7 +145,7 @@ export default function Contact() {
                       required
                       value={formState.name}
                       onChange={handleChange}
-                      className="w-full px-5 py-3 bg-surface border border-gray-200 rounded-xl focus:ring-2 focus:ring-accent focus:border-transparent transition-all outline-none"
+                      className="w-full px-5 py-3 bg-industrial-chrome border border-gray-200 rounded-xl focus:ring-2 focus:ring-accent focus:border-transparent transition-all outline-none"
                       placeholder="John Doe"
                     />
                   </div>
@@ -158,7 +158,7 @@ export default function Contact() {
                       required
                       value={formState.email}
                       onChange={handleChange}
-                      className="w-full px-5 py-3 bg-surface border border-gray-200 rounded-xl focus:ring-2 focus:ring-accent focus:border-transparent transition-all outline-none"
+                      className="w-full px-5 py-3 bg-industrial-chrome border border-gray-200 rounded-xl focus:ring-2 focus:ring-accent focus:border-transparent transition-all outline-none"
                       placeholder="john@company.com"
                     />
                   </div>
@@ -172,7 +172,7 @@ export default function Contact() {
                     name="company"
                     value={formState.company}
                     onChange={handleChange}
-                    className="w-full px-5 py-3 bg-surface border border-gray-200 rounded-xl focus:ring-2 focus:ring-accent focus:border-transparent transition-all outline-none"
+                    className="w-full px-5 py-3 bg-industrial-chrome border border-gray-200 rounded-xl focus:ring-2 focus:ring-accent focus:border-transparent transition-all outline-none"
                     placeholder="Engineering Inc."
                   />
                 </div>
@@ -186,7 +186,7 @@ export default function Contact() {
                     rows="5"
                     value={formState.message}
                     onChange={handleChange}
-                    className="w-full px-5 py-3 bg-surface border border-gray-200 rounded-xl focus:ring-2 focus:ring-accent focus:border-transparent transition-all outline-none resize-none"
+                    className="w-full px-5 py-3 bg-industrial-chrome border border-gray-200 rounded-xl focus:ring-2 focus:ring-accent focus:border-transparent transition-all outline-none resize-none"
                     placeholder="Tell us about your project requirements..."
                   ></textarea>
                 </div>
