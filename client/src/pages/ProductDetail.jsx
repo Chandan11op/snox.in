@@ -140,9 +140,6 @@ export default function ProductDetail() {
               </div>
 
               <div className="mt-auto pt-8 border-t border-gray-100 flex flex-col sm:flex-row items-center space-y-4 sm:space-y-0 sm:space-x-4">
-                <Link to="/contact" className="w-full sm:w-auto text-center bg-primary text-white px-8 py-4 rounded-xl font-semibold shadow-premium hover:bg-primary-light transition-all transform hover:-translate-y-1">
-                  Request a Quote
-                </Link>
                 <a href="#specifications" className="w-full sm:w-auto text-center bg-white text-primary border border-gray-200 px-8 py-4 rounded-xl font-semibold hover:bg-gray-50 transition-colors">
                   View Specifications
                 </a>
