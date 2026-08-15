@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Link } from 'react-router-dom';
-import { ArrowRight, Filter } from 'lucide-react';
+import { useSearchParams, Link } from 'react-router-dom';
+import { ArrowRight, Filter, SearchX } from 'lucide-react';
 import { productsData } from '../data/products';
 
 const products = productsData;
@@ -9,10 +9,16 @@ const categories = Array.from(new Set(products.map(p => p.category)));
 
 export default function Products() {
   const [activeCategory, setActiveCategory] = useState('All');
+  const [searchParams, setSearchParams] = useSearchParams();
+  const searchQuery = searchParams.get('search') || '';
 
-  const filteredProducts = activeCategory === 'All' 
-    ? products 
-    : products.filter(p => p.category === activeCategory);
+  const filteredProducts = products.filter(p => {
+    const matchesCategory = activeCategory === 'All' || p.category === activeCategory;
+    const matchesSearch = searchQuery === '' || 
+      p.name.toLowerCase().includes(searchQuery.toLowerCase()) || 
+      p.description.toLowerCase().includes(searchQuery.toLowerCase());
+    return matchesCategory && matchesSearch;
+  });
 
   return (
     <div className="bg-industrial-chrome min-h-screen pb-24">
@@ -27,7 +33,7 @@ export default function Products() {
           <motion.h1 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="text-4xl md:text-6xl font-display font-bold mb-6"
+            className="text-4xl md:text-6xl font-display font-bold mb-6 text-white drop-shadow-lg"
           >
             Product Catalogue
           </motion.h1>
@@ -135,14 +141,20 @@ export default function Products() {
           </motion.div>
 
           {filteredProducts.length === 0 && (
-            <div className="text-center py-20 bg-white rounded-2xl border border-gray-100">
+            <div className="text-center py-20 bg-white rounded-2xl border border-gray-100 flex flex-col items-center">
+              <SearchX size={48} className="text-gray-300 mb-4" />
               <h3 className="text-2xl font-display font-bold text-gray-400 mb-2">No products found</h3>
-              <p className="text-gray-500">Try selecting a different category.</p>
+              <p className="text-gray-500 mb-6">
+                {searchQuery ? `No results for "${searchQuery}" in this category.` : 'Try selecting a different category.'}
+              </p>
               <button 
-                onClick={() => setActiveCategory('All')}
-                className="mt-6 text-accent font-semibold hover:underline"
+                onClick={() => {
+                  setActiveCategory('All');
+                  setSearchParams({});
+                }}
+                className="btn bg-primary text-white px-6 py-2 rounded-full hover:bg-primary-light"
               >
-                Clear filters
+                Clear Filters & Search
               </button>
             </div>
           )}

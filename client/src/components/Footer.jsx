@@ -9,9 +9,9 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-primary text-white pt-20 pb-10 relative overflow-hidden">
+    <footer className="bg-blue-50 text-primary pt-10 pb-6 relative overflow-hidden">
       {/* Background shape */}
-      <div className="absolute top-0 right-0 w-96 h-96 bg-accent opacity-5 rounded-full blur-3xl transform translate-x-1/2 -translate-y-1/2"></div>
+      <div className="absolute top-0 right-0 w-96 h-96 bg-accent opacity-10 rounded-full blur-3xl transform translate-x-1/2 -translate-y-1/2"></div>
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
@@ -19,17 +19,17 @@ export default function Footer() {
             <Link to="/" className="inline-block mb-8">
               <img src={snoxLogo} alt="SNOX Logo" className="h-12 w-auto" />
             </Link>
-            <p className="text-gray-300 max-w-md text-lg leading-relaxed mb-8">
+            <p className="text-gray-700 max-w-md text-lg leading-relaxed mb-8">
               Leading manufacturer of premium industrial and sanitary fluid control solutions. Precision engineering for the most demanding applications worldwide.
             </p>
             <div className="flex space-x-4">
-              <a href="#" className="p-2 rounded-full bg-white/10 hover:bg-accent transition-colors duration-300">
+              <a href="#" className="p-2 rounded-full bg-primary/10 text-primary hover:bg-accent hover:text-white transition-colors duration-300">
                 <FaLinkedinIn size={20} />
               </a>
-              <a href="#" className="p-2 rounded-full bg-white/10 hover:bg-accent transition-colors duration-300">
+              <a href="#" className="p-2 rounded-full bg-primary/10 text-primary hover:bg-accent hover:text-white transition-colors duration-300">
                 <FaTwitter size={20} />
               </a>
-              <a href="#" className="p-2 rounded-full bg-white/10 hover:bg-accent transition-colors duration-300">
+              <a href="#" className="p-2 rounded-full bg-primary/10 text-primary hover:bg-accent hover:text-white transition-colors duration-300">
                 <FaFacebookF size={20} />
               </a>
             </div>
@@ -38,24 +38,24 @@ export default function Footer() {
           <div>
             <h4 className="text-xl font-display font-semibold mb-6">Quick Links</h4>
             <ul className="space-y-4">
-              <li><Link to="/" className="text-gray-300 hover:text-accent transition-colors">Home</Link></li>
-              <li><Link to="/products" className="text-gray-300 hover:text-accent transition-colors">Products</Link></li>
+              <li><Link to="/" className="text-gray-700 hover:text-accent transition-colors">Home</Link></li>
+              <li><Link to="/products" className="text-gray-700 hover:text-accent transition-colors">Products</Link></li>
             </ul>
           </div>
           <div>
             <h4 className="text-xl font-display font-semibold mb-6 tracking-wide">Certifications</h4>
             <div className="flex flex-col space-y-4">
-              <p className="text-sm text-gray-400">Manufactured under strict quality standards:</p>
+              <p className="text-sm text-gray-600">Manufactured under strict quality standards:</p>
               <div className="flex items-center gap-4">
-                <img src={iso9001} alt="ISO 9001" className="h-12 w-auto opacity-70 hover:opacity-100 transition-opacity" />
-                <img src={iso14001} alt="ISO 14001" className="h-12 w-auto opacity-70 hover:opacity-100 transition-opacity" />
-                <img src={iso45001} alt="ISO 45001" className="h-12 w-auto opacity-70 hover:opacity-100 transition-opacity" />
+                <img src={iso9001} alt="ISO 9001" className="h-20 w-auto opacity-80 hover:opacity-100 transition-opacity" />
+                <img src={iso14001} alt="ISO 14001" className="h-20 w-auto opacity-80 hover:opacity-100 transition-opacity" />
+                <img src={iso45001} alt="ISO 45001" className="h-20 w-auto opacity-80 hover:opacity-100 transition-opacity" />
               </div>
             </div>
           </div>
         </div>
         
-        <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center text-sm text-gray-400">
+        <div className="border-t border-primary/10 pt-8 flex flex-col md:flex-row justify-between items-center text-sm text-gray-600">
           <div className="mb-4 md:mb-0">
             &copy; {currentYear} Snox Industrial. All rights reserved.
           </div>

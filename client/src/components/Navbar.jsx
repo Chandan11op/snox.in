@@ -1,21 +1,29 @@
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
 import snoxLogo from '../assets/logo/snoxlogo.png';
 
 export default function Navbar() {
-  const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const location = useLocation();
+  const navigate = useNavigate();
+  const [searchQuery, setSearchQuery] = useState('');
 
   useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+    const params = new URLSearchParams(location.search);
+    setSearchQuery(params.get('search') || '');
+  }, [location.search]);
+
+  const handleSearchSubmit = (e) => {
+    if (e.key === 'Enter') {
+      if (searchQuery.trim()) {
+        navigate(`/products?search=${encodeURIComponent(searchQuery.trim())}`);
+      } else {
+        navigate('/products');
+      }
+    }
+  };
 
   const navLinks = [
     { title: 'Home', path: '/' },
@@ -24,9 +32,7 @@ export default function Navbar() {
 
   return (
     <header 
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        scrolled ? 'bg-primary-light/90 backdrop-blur-md shadow-premium py-4' : 'bg-transparent py-6'
-      }`}
+      className="sticky top-0 left-0 right-0 z-50 bg-white shadow-premium py-2 transition-all duration-300"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center">
         {/* Left: Logo */}
@@ -43,7 +49,7 @@ export default function Navbar() {
               key={link.title} 
               to={link.path} 
               className={`relative font-medium tracking-wide transition-colors hover:text-accent ${
-                location.pathname === link.path ? 'text-accent' : 'text-white'
+                location.pathname === link.path ? 'text-accent' : 'text-primary'
               }`}
             >
               {link.title}
@@ -63,11 +69,14 @@ export default function Navbar() {
             <input 
               type="text" 
               placeholder="Search..." 
-              className="bg-white/20 border border-white/30 text-white rounded-full px-4 py-1.5 focus:outline-none focus:border-accent text-sm w-48 lg:w-64 placeholder-white/60 transition-all"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              onKeyDown={handleSearchSubmit}
+              className="border rounded-full px-4 py-1.5 focus:outline-none focus:border-accent text-sm w-48 lg:w-64 transition-all bg-gray-100 border-gray-200 text-primary placeholder-gray-500"
             />
           </div>
           <button 
-            className="md:hidden text-white focus:outline-none" 
+            className="md:hidden focus:outline-none text-primary"
             onClick={() => setMobileOpen(!mobileOpen)}
             aria-label="Toggle Menu"
           >

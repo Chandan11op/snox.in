@@ -5,17 +5,31 @@ export const productsData = [
     name: 'SS Tri-Clover / TC Clamps',
     category: 'Sanitary Clamps',
     price: 'Contact for Quote',
-    image: '/assets/products/TRICLOVERFITTINGS/tc-clamp.jpg',
-    images: ['/assets/products/TRICLOVERFITTINGS/tc-clamp.jpg'],
+    image: '/assets/products/generated/sanitary-tc-clamp-1.jpg',
+    images: [
+      '/assets/products/generated/sanitary-tc-clamp-1.jpg',
+      '/assets/products/generated/sanitary-tc-clamp-2.jpg',
+      '/assets/products/generated/sanitary-tc-clamp-3.jpg'
+    ],
     description: 'Precision-engineered Stainless Steel Triclover Clamps for hygienic fluid handling. Designed for quick assembly and disassembly in food, beverage, and pharmaceutical applications.',
     seoTitle: 'SS Tri-Clover TC Clamps | SNOX.IN',
     seoDescription: 'High-quality Grade 304 & 316 Stainless Steel Tri-Clover clamps. Mill certified and FDA approved for brewery, winery, and dairy pipelines.',
     features: [
-      'Grade: 304 & 316L Stainless Steel',
-      'Connection: Tri-Clamp (TC)',
-      'Sizes: 1/2" to 24"',
-      'Certification: Mill Certified & FDA Approved'
+      'GRADE: 304 & 316L STAINLESS STEEL',
+      'CONNECTION: TRI-CLAMP (TC)',
+      'SIZES: 1/2" TO 24"',
+      'CERTIFICATION: MILL CERTIFIED & FDA APPROVED'
     ],
+    tableSpecifications: {
+      headers: ["SIZE", "PIPE OD (MM)", "FERRULE OD (MM)", "A (MM)", "B (MM)"],
+      rows: [
+        ["1/2\"", "12.7", "25.2", "18.0", "1.5"],
+        ["3/4\"", "19.0", "25.2", "18.0", "1.5"],
+        ["1\"", "25.4", "50.5", "21.5", "1.5"],
+        ["1.5\"", "38.1", "50.5", "21.5", "1.5"],
+        ["2\"", "50.8", "64.0", "21.5", "1.5"]
+      ]
+    },
     specifications: {
       'Sizes Available': '1/2", 3/4", 1", 1.5", 2", 2.5", 3", 4", 5", 6", 8", 10", 12", 14", 16", 18", 20", 24"',
       'Material': 'SS 304 / SS 316L',
@@ -30,16 +44,30 @@ export const productsData = [
     name: 'SS Sanitary Ferrules',
     category: 'Fittings & Tubing',
     price: 'Contact for Quote',
-    image: '/assets/products/TRICLOVERFITTINGS/tc-ferrule.jpg',
-    images: ['/assets/products/TRICLOVERFITTINGS/tc-ferrule.jpg'],
+    image: '/assets/products/generated/sanitary-ferrules-1.jpg',
+    images: [
+      '/assets/products/generated/sanitary-ferrules-1.jpg',
+      '/assets/products/generated/sanitary-ferrules-2.jpg',
+      '/assets/products/generated/sanitary-ferrules-3.jpg'
+    ],
     description: 'Heavy-duty sanitary ferrules ensuring leak-proof welded connections for tri-clamp assemblies.',
     seoTitle: 'SS Sanitary Ferrules - Weld Ends | SNOX.IN',
     seoDescription: 'Premium SS 316L sanitary ferrules for secure tri-clamp assemblies. Available in 1/2" to 12" sizes.',
     features: [
-      'Material: SS 304 & SS 316L',
-      'Standard: DIN, SMS, ISO, IDF',
-      'Sizes: 1/2" to 12"'
+      'MATERIAL: SS 304 & SS 316L',
+      'STANDARD: DIN, SMS, ISO, IDF',
+      'SIZES: 1/2" TO 12"'
     ],
+    tableSpecifications: {
+      headers: ["SIZE", "PIPE OD (MM)", "FERRULE OD (MM)", "LENGTH (MM)"],
+      rows: [
+        ["1/2\"", "12.7", "25.2", "21.5"],
+        ["3/4\"", "19.0", "25.2", "21.5"],
+        ["1\"", "25.4", "50.5", "21.5"],
+        ["1.5\"", "38.1", "50.5", "21.5"],
+        ["2\"", "50.8", "64.0", "21.5"]
+      ]
+    },
     specifications: {
       'Sizes': '1/2" OD to 12" OD',
       'Wall Thickness': '1.2mm, 1.5mm, 2.0mm',
@@ -53,16 +81,30 @@ export const productsData = [
     name: 'SS Pipe Holder / Hanger',
     category: 'Accessories',
     price: 'Contact for Quote',
-    image: '/assets/products/sanitary_accessory_placeholder.jpg',
-    images: ['/assets/products/sanitary_accessory_placeholder.jpg'],
+    image: '/assets/products/generated/pipe-holder-hanger-1.jpg',
+    images: [
+      '/assets/products/generated/pipe-holder-hanger-1.jpg',
+      '/assets/products/generated/pipe-holder-hanger-2.jpg',
+      '/assets/products/generated/pipe-holder-hanger-3.jpg'
+    ],
     description: 'Robust stainless steel pipe hangers with or without rubber inserts to support sanitary tubing securely.',
     seoTitle: 'SS Pipe Holders & Hangers | SNOX.IN',
     seoDescription: 'SS Pipe hangers and structural supports for sanitary piping systems.',
     features: [
-      'Type: Hexagonal, Round, with/without Rubber',
-      'Material: SS 304',
-      'Sizes: 1/2" to 8"'
+      'TYPE: HEXAGONAL, ROUND, WITH/WITHOUT RUBBER',
+      'MATERIAL: SS 304',
+      'SIZES: 1/2" TO 8"'
     ],
+    tableSpecifications: {
+      headers: ["SIZE", "PIPE OD (MM)", "THREAD SIZE", "STEM LENGTH (MM)"],
+      rows: [
+        ["1\"", "25.4", "M8", "50"],
+        ["1.5\"", "38.1", "M8", "50"],
+        ["2\"", "50.8", "M10", "60"],
+        ["2.5\"", "63.5", "M10", "60"],
+        ["3\"", "76.2", "M12", "70"]
+      ]
+    },
     specifications: {
       'Sizes': '1/2" to 8"',
       'Design': 'Threaded stem or weldable base',
@@ -76,16 +118,30 @@ export const productsData = [
     name: 'SS Tri-Clamp Hose Adaptor',
     category: 'Fittings & Tubing',
     price: 'Contact for Quote',
-    image: '/assets/products/tc-hose-adaptor.jpg',
-    images: ['/assets/products/tc-hose-adaptor.jpg'],
+    image: '/assets/products/generated/tc-hose-adaptor-1.jpg',
+    images: [
+      '/assets/products/generated/tc-hose-adaptor-1.jpg',
+      '/assets/products/generated/tc-hose-adaptor-2.jpg',
+      '/assets/products/generated/tc-hose-adaptor-3.jpg'
+    ],
     description: 'Hygienic hose barbs to adapt flexible tubing directly to sanitary tri-clamp connections.',
     seoTitle: 'SS Tri-Clamp Hose Adaptors | SNOX.IN',
     seoDescription: 'Sanitary TC hose adaptors for flexible fluid transfer lines.',
     features: [
-      'Design: Multi-barbed for secure grip',
-      'Material: SS 316L',
-      'Surface: Mechanically polished'
+      'DESIGN: MULTI-BARBED FOR SECURE GRIP',
+      'MATERIAL: SS 316L',
+      'SURFACE: MECHANICALLY POLISHED'
     ],
+    tableSpecifications: {
+      headers: ["SIZE", "HOSE ID (MM)", "FERRULE OD (MM)", "OVERALL LENGTH (MM)"],
+      rows: [
+        ["1/2\"", "12.7", "25.2", "40"],
+        ["3/4\"", "19.0", "25.2", "45"],
+        ["1\"", "25.4", "50.5", "50"],
+        ["1.5\"", "38.1", "50.5", "50"],
+        ["2\"", "50.8", "64.0", "60"]
+      ]
+    },
     specifications: {
       'Sizes': '1/2" to 4"',
       'End 1': 'Tri-Clamp',
@@ -99,16 +155,30 @@ export const productsData = [
     name: 'SS Valves (Tri-Clamp / Weld End)',
     category: 'Valves',
     price: 'Contact for Quote',
-    image: '/assets/products/BUTTERFLYVALVE/butterfly-valve-flange.jpg',
-    images: ['/assets/products/BUTTERFLYVALVE/butterfly-valve-flange.jpg', '/assets/products/BALLVALVE/BSPBALLVALVE.jpg'],
+    image: '/assets/products/generated/ss-valves-tri-weld-1.jpg',
+    images: [
+      '/assets/products/generated/ss-valves-tri-weld-1.jpg',
+      '/assets/products/generated/ss-valves-tri-weld-2.jpg',
+      '/assets/products/generated/ss-valves-tri-weld-3.jpg'
+    ],
     description: 'Comprehensive range of manual flow control valves including Butterfly, Ball, and Diaphragm configurations.',
     seoTitle: 'SS Sanitary Valves | SNOX.IN',
     seoDescription: 'Manual Tri-clamp and Weld-end sanitary valves for precise flow control.',
     features: [
-      'Types: Butterfly, Ball, Non-Return (NRV)',
-      'Actuation: Manual Handle (Pull/Squeeze)',
-      'Seats: EPDM, Silicone, PTFE'
+      'TYPES: BUTTERFLY, BALL, NON-RETURN (NRV)',
+      'ACTUATION: MANUAL HANDLE (PULL/SQUEEZE)',
+      'SEATS: EPDM, SILICONE, PTFE'
     ],
+    tableSpecifications: {
+      headers: ["SIZE", "END CONNECTION", "MAX PRESSURE (BAR)", "MAX TEMP (°C)"],
+      rows: [
+        ["1\"", "TC / Weld", "10", "120"],
+        ["1.5\"", "TC / Weld", "10", "120"],
+        ["2\"", "TC / Weld", "10", "120"],
+        ["2.5\"", "TC / Weld", "8", "120"],
+        ["3\"", "TC / Weld", "8", "120"]
+      ]
+    },
     specifications: {
       'Sizes': '1/2" to 6"',
       'Material': 'SS 304 / 316L',
@@ -123,16 +193,28 @@ export const productsData = [
     name: 'SS Sanitary Spray Ball',
     category: 'Accessories',
     price: 'Contact for Quote',
-    image: '/assets/products/ss-spray-ball.jpg',
-    images: ['/assets/products/ss-spray-ball.jpg'],
+    image: '/assets/products/generated/ss-spray-ball-1.jpg',
+    images: [
+      '/assets/products/generated/ss-spray-ball-1.jpg',
+      '/assets/products/generated/ss-spray-ball-2.jpg',
+      '/assets/products/generated/ss-spray-ball-3.jpg'
+    ],
     description: 'Stationary and rotary spray balls designed for comprehensive Clean-In-Place (CIP) tank washing.',
     seoTitle: 'SS Sanitary CIP Spray Balls | SNOX.IN',
     seoDescription: 'Rotary and static CIP spray balls for hygienic tank cleaning.',
     features: [
-      'Type: Rotary & Static (360°, 180° coverage)',
-      'Connection: Pin, Threaded, Weld, or Clamp',
-      'Material: SS 316L'
+      'TYPE: ROTARY & STATIC (360°, 180° COVERAGE)',
+      'CONNECTION: PIN, THREADED, WELD, OR CLAMP',
+      'MATERIAL: SS 316L'
     ],
+    tableSpecifications: {
+      headers: ["SIZE", "CONNECTION", "BALL DIAMETER (MM)", "CLEANING RADIUS (M)"],
+      rows: [
+        ["1\"", "Pin / BSP", "38", "1.5"],
+        ["1.5\"", "Pin / BSP", "50", "2.0"],
+        ["2\"", "Pin / BSP", "63", "2.5"]
+      ]
+    },
     specifications: {
       'Sizes': '1" to 3"',
       'Flow Rate': 'Customized based on pressure',
@@ -146,16 +228,28 @@ export const productsData = [
     name: 'SS Sanitary Y-Strainer',
     category: 'Accessories',
     price: 'Contact for Quote',
-    image: '/assets/products/ss-y-strainer.jpg',
-    images: ['/assets/products/ss-y-strainer.jpg'],
+    image: '/assets/products/generated/ss-y-strainer-1.webp',
+    images: [
+      '/assets/products/generated/ss-y-strainer-1.webp',
+      '/assets/products/generated/ss-y-strainer-2.webp',
+      '/assets/products/generated/ss-y-strainer-3.webp'
+    ],
     description: 'Inline Y-Strainers and conical filters to protect pumps and equipment from particulates in sanitary lines.',
     seoTitle: 'SS Sanitary Y-Strainers | SNOX.IN',
     seoDescription: 'High-capacity SS sanitary Y-strainers and inline filters.',
     features: [
-      'Filter Element: Perforated tube or Wire mesh',
-      'Mesh Size: 20 to 200 Mesh available',
-      'Maintenance: Easy-to-remove clamping design'
+      'FILTER ELEMENT: PERFORATED TUBE OR WIRE MESH',
+      'MESH SIZE: 20 TO 200 MESH AVAILABLE',
+      'MAINTENANCE: EASY-TO-REMOVE CLAMPING DESIGN'
     ],
+    tableSpecifications: {
+      headers: ["SIZE", "END CONNECTION", "OVERALL LENGTH (MM)", "FILTER AREA (CM²)"],
+      rows: [
+        ["1\"", "TC / Weld", "150", "200"],
+        ["1.5\"", "TC / Weld", "180", "350"],
+        ["2\"", "TC / Weld", "220", "500"]
+      ]
+    },
     specifications: {
       'Sizes': '1" to 4"',
       'Material': 'SS 316L wetted parts',
@@ -169,16 +263,29 @@ export const productsData = [
     name: 'SS Sight View Glass Assembly',
     category: 'Accessories',
     price: 'Contact for Quote',
-    image: '/assets/products/sight-glasses.jpg',
-    images: ['/assets/products/sight-glasses.jpg'],
+    image: '/assets/products/generated/ss-sight-glass-1.webp',
+    images: [
+      '/assets/products/generated/ss-sight-glass-1.webp',
+      '/assets/products/generated/ss-sight-glass-2.webp',
+      '/assets/products/generated/ss-sight-glass-3.webp'
+    ],
     description: 'Tubular and cross sight glasses offering 360-degree observation of fluid flow in critical pipelines.',
     seoTitle: 'Sanitary Sight Glass Assemblies | SNOX.IN',
     seoDescription: 'Tubular inline sight glasses for fluid observation in sanitary processes.',
     features: [
-      'Glass Type: Borosilicate',
-      'Protection: Optional SS guarding net',
-      'Connection: Tri-Clamp or Weld'
+      'GLASS TYPE: BOROSILICATE',
+      'PROTECTION: OPTIONAL SS GUARDING NET',
+      'CONNECTION: TRI-CLAMP OR WELD'
     ],
+    tableSpecifications: {
+      headers: ["SIZE", "GLASS OD (MM)", "OVERALL LENGTH (MM)", "MAX PRESSURE (BAR)"],
+      rows: [
+        ["1\"", "32", "148", "10"],
+        ["1.5\"", "40", "156", "10"],
+        ["2\"", "50", "160", "8"],
+        ["2.5\"", "65", "160", "6"]
+      ]
+    },
     specifications: {
       'Sizes': '1" to 6"',
       'Max Temp': '150°C',
@@ -192,16 +299,29 @@ export const productsData = [
     name: 'SS Pneumatic Actuated Valves',
     category: 'Valves',
     price: 'Contact for Quote',
-    image: '/assets/products/ss-pneumatic-valves.jpg',
-    images: ['/assets/products/ss-pneumatic-valves.jpg'],
+    image: '/assets/products/generated/ss-pneumatic-valves-1.webp',
+    images: [
+      '/assets/products/generated/ss-pneumatic-valves-1.webp',
+      '/assets/products/generated/ss-pneumatic-valves-2.webp',
+      '/assets/products/generated/ss-pneumatic-valves-3.webp'
+    ],
     description: 'Automated sanitary valves powered by pneumatic actuators for integration into PLC controlled processing plants.',
     seoTitle: 'Pneumatic Actuated Sanitary Valves | SNOX.IN',
     seoDescription: 'Automated pneumatic butterfly and seat valves for sanitary flow control.',
     features: [
-      'Actuator Type: Single Acting (Spring Return) or Double Acting',
-      'Valve Base: Butterfly, Seat, or Diaphragm',
-      'Options: Position sensors and control tops available'
+      'ACTUATOR TYPE: SINGLE ACTING (SPRING RETURN) OR DOUBLE ACTING',
+      'VALVE BASE: BUTTERFLY, SEAT, OR DIAPHRAGM',
+      'OPTIONS: POSITION SENSORS AND CONTROL TOPS AVAILABLE'
     ],
+    tableSpecifications: {
+      headers: ["SIZE", "ACTUATOR AIR (BAR)", "VALVE TYPE", "SIGNAL"],
+      rows: [
+        ["1\"", "5-7", "Butterfly", "NC/NO"],
+        ["1.5\"", "5-7", "Butterfly", "NC/NO"],
+        ["2\"", "5-7", "Butterfly", "NC/NO"],
+        ["2.5\"", "5-7", "Butterfly", "NC/NO"]
+      ]
+    },
     specifications: {
       'Sizes': '1" to 4"',
       'Air Supply': '5-7 Bar',
