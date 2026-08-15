@@ -20,22 +20,24 @@ export default function Navbar() {
   const navLinks = [
     { title: 'Home', path: '/' },
     { title: 'Products', path: '/products' },
-    { title: 'About', path: '/about' },
-    { title: 'Contact', path: '/contact' },
   ];
 
   return (
     <header 
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        scrolled ? 'bg-primary-dark/90 backdrop-blur-md shadow-premium py-4' : 'bg-transparent py-6'
+        scrolled ? 'bg-primary-light/90 backdrop-blur-md shadow-premium py-4' : 'bg-transparent py-6'
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center">
-        <Link to="/" className="flex items-center space-x-2">
-          <img src={snoxLogo} alt="SNOX Logo" className="h-10 w-auto" />
-        </Link>
+        {/* Left: Logo */}
+        <div className="flex-1 flex justify-start">
+          <Link to="/" className="flex items-center space-x-2">
+            <img src={snoxLogo} alt="SNOX Logo" className="h-24 w-auto" />
+          </Link>
+        </div>
         
-        <nav className="hidden md:flex items-center space-x-8">
+        {/* Center: Nav Links */}
+        <nav className="hidden md:flex flex-1 justify-center items-center space-x-8">
           {navLinks.map((link) => (
             <Link 
               key={link.title} 
@@ -53,21 +55,25 @@ export default function Navbar() {
               )}
             </Link>
           ))}
-          <Link 
-            to="/contact" 
-            className="bg-accent text-primary-dark px-8 py-2.5 rounded-none font-bold uppercase tracking-wider shadow-premium hover:bg-accent-hover transition-colors transform hover:-translate-y-0.5 duration-200"
-          >
-            Get Quote
-          </Link>
         </nav>
 
-        <button 
-          className="md:hidden text-white focus:outline-none" 
-          onClick={() => setMobileOpen(!mobileOpen)}
-          aria-label="Toggle Menu"
-        >
-          {mobileOpen ? <X size={28} /> : <Menu size={28} />}
-        </button>
+        {/* Right: Search Bar and Mobile Button */}
+        <div className="flex-1 flex justify-end items-center space-x-4">
+          <div className="relative hidden md:block">
+            <input 
+              type="text" 
+              placeholder="Search..." 
+              className="bg-white/20 border border-white/30 text-white rounded-full px-4 py-1.5 focus:outline-none focus:border-accent text-sm w-48 lg:w-64 placeholder-white/60 transition-all"
+            />
+          </div>
+          <button 
+            className="md:hidden text-white focus:outline-none" 
+            onClick={() => setMobileOpen(!mobileOpen)}
+            aria-label="Toggle Menu"
+          >
+            {mobileOpen ? <X size={28} /> : <Menu size={28} />}
+          </button>
+        </div>
       </div>
 
       <AnimatePresence>
@@ -91,13 +97,6 @@ export default function Navbar() {
                 {link.title}
               </Link>
             ))}
-            <Link 
-              to="/contact" 
-              className="bg-accent text-primary-dark text-center py-4 rounded-none font-bold uppercase mt-4 shadow-md"
-              onClick={() => setMobileOpen(false)}
-            >
-              Get Quote
-            </Link>
           </motion.div>
         )}
       </AnimatePresence>

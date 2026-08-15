@@ -40,26 +40,6 @@ export default function Footer() {
             <ul className="space-y-4">
               <li><Link to="/" className="text-gray-300 hover:text-accent transition-colors">Home</Link></li>
               <li><Link to="/products" className="text-gray-300 hover:text-accent transition-colors">Products</Link></li>
-              <li><Link to="/about" className="text-gray-300 hover:text-accent transition-colors">About Us</Link></li>
-              <li><Link to="/contact" className="text-gray-300 hover:text-accent transition-colors">Contact</Link></li>
-            </ul>
-          </div>
-          
-          <div>
-            <h4 className="text-xl font-display font-semibold mb-6">Contact Info</h4>
-            <ul className="space-y-4">
-              <li className="flex items-start space-x-3 text-gray-300">
-                <Mail className="mt-1 text-accent flex-shrink-0" size={18} />
-                <span>info@snox.in</span>
-              </li>
-              <li className="flex items-start space-x-3 text-gray-300">
-                <Phone className="mt-1 text-accent flex-shrink-0" size={18} />
-                <span>+91 123 456 7890</span>
-              </li>
-              <li className="flex items-start space-x-3 text-gray-300">
-                <MapPin className="mt-1 text-accent flex-shrink-0" size={18} />
-                <span>Industrial Area, Mumbai, India</span>
-              </li>
             </ul>
           </div>
           <div>

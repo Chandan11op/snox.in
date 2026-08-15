@@ -8,13 +8,13 @@ export default {
     extend: {
       colors: {
         primary: {
-          DEFAULT: '#0F172A', // Slate 900
-          light: '#1E293B',   // Slate 800
-          dark: '#020617',    // Slate 950
+          DEFAULT: '#1E3A8A', // Blue 900
+          light: '#1D4ED8',   // Blue 700
+          dark: '#172554',    // Blue 950
         },
         accent: {
-          DEFAULT: '#F59E0B', // Precision Amber/Orange
-          hover: '#D97706',
+          DEFAULT: '#3B82F6', // Blue 500
+          hover: '#2563EB',   // Blue 600
         },
         industrial: {
           steel: '#94A3B8',
@@ -31,7 +31,7 @@ export default {
         'inner-glow': 'inset 0 2px 4px 0 rgba(255, 255, 255, 0.05)',
       },
       backgroundImage: {
-        'industrial-gradient': 'linear-gradient(to right, #0F172A, #1E293B)',
+        'industrial-gradient': 'linear-gradient(to right, #1E3A8A, #1D4ED8)',
         'steel-gradient': 'linear-gradient(135deg, #F8FAFC 0%, #E2E8F0 100%)',
       }
     },

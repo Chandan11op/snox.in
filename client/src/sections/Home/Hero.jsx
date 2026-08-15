@@ -68,9 +68,6 @@ export default function Hero() {
               Explore Products
               <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" size={20} />
             </Link>
-            <Link to="/contact" className="group flex items-center justify-center bg-transparent border border-white/30 text-white px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300 hover:bg-white/10 w-full sm:w-auto backdrop-blur-sm">
-              Contact Us
-            </Link>
           </motion.div>
         </div>
 
