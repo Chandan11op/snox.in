@@ -1,0 +1,69 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html, body {
+    @apply antialiased text-gray-800 bg-[#F8FAFC] selection:bg-accent selection:text-white;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Syncopate', sans-serif;
+    @apply tracking-tight text-primary;
+  }
+  
+  p, span, a, div {
+    @apply font-sans;
+  }
+}
+
+@layer components {
+  /* Premium Glassmorphism */
+  .glass {
+    @apply bg-white/70 backdrop-blur-md border border-white/20 shadow-premium;
+  }
+  
+  .glass-dark {
+    @apply bg-primary/80 backdrop-blur-lg border border-white/10 shadow-premium;
+  }
+
+  /* Animated Borders */
+  .animated-border {
+    position: relative;
+  }
+  
+  .animated-border::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0%;
+    height: 2px;
+    background-color: theme('colors.accent.DEFAULT');
+    transition: width 0.3s ease;
+  }
+  
+  .animated-border:hover::after {
+    width: 100%;
+  }
+
+  /* Custom Scrollbar for a premium feel */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: theme('colors.industrial.chrome');
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: theme('colors.primary.light');
+    border-radius: 4px;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: theme('colors.primary.DEFAULT');
+  }
+}

@@ -1,43 +1,38 @@
 /** @type {import('tailwindcss').Config} */
-module.exports = {
+export default {
   content: [
-    "./src/**/*.{js,jsx,ts,tsx}",
+    "./index.html",
+    "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
     extend: {
-      fontFamily: {
-        sans: ['Inter', 'sans-serif'],
-      },
       colors: {
-        industrial: {
-          50: '#f5f7f9',
-          100: '#eef1f5',
-          200: '#dfe4ea',
-          300: '#c5ced8',
-          400: '#a3b2c2',
-          500: '#8396ab',
-          600: '#697a8e',
-          700: '#556376',
-          800: '#475363',
-          900: '#3e4753',
-          950: '#1e242c',
+        primary: {
+          DEFAULT: '#1E3A8A', // Blue 900
+          light: '#1D4ED8',   // Blue 700
+          dark: '#172554',    // Blue 950
         },
-        steel: {
-          DEFAULT: '#8a949c',
-          dark: '#586069'
+        accent: {
+          DEFAULT: '#3B82F6', // Blue 500
+          hover: '#2563EB',   // Blue 600
+        },
+        industrial: {
+          steel: '#94A3B8',
+          silver: '#E2E8F0',
+          chrome: '#F8FAFC',
         }
       },
-      spacing: {
-        // Enforcing a strict 8px scale where needed. 
-        // Tailwind default scale already handles 8px beautifully (4=16px, 8=32px, 12=48px, etc)
-        // We'll explicitly add massive spacing options for premium breathing room
-        '18': '4.5rem',
-        '22': '5.5rem',
-        '30': '7.5rem',
-        'safe': 'calc(100vh - 4rem)'
+      fontFamily: {
+        sans: ['Inter', 'sans-serif'],
+        display: ['Syncopate', 'sans-serif'], // For industrial headings
+      },
+      boxShadow: {
+        'premium': '0 10px 40px -10px rgba(0,0,0,0.1)',
+        'inner-glow': 'inset 0 2px 4px 0 rgba(255, 255, 255, 0.05)',
       },
       backgroundImage: {
-        'steel-gradient': 'linear-gradient(to right, #dfe4ea, #f5f7f9)',
+        'industrial-gradient': 'linear-gradient(to right, #1E3A8A, #1D4ED8)',
+        'steel-gradient': 'linear-gradient(135deg, #F8FAFC 0%, #E2E8F0 100%)',
       }
     },
   },
