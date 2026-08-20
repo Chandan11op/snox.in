@@ -228,11 +228,11 @@ export const productsData = [
     name: 'SS Sanitary Y-Strainer',
     category: 'Accessories',
     price: 'Contact for Quote',
-    image: '/assets/products/generated/ss-y-strainer-1.webp',
+    image: '/assets/products/generated/ss-y-strainer-1.jpg',
     images: [
-      '/assets/products/generated/ss-y-strainer-1.webp',
-      '/assets/products/generated/ss-y-strainer-2.webp',
-      '/assets/products/generated/ss-y-strainer-3.webp'
+      '/assets/products/generated/ss-y-strainer-1.jpg',
+      '/assets/products/generated/ss-y-strainer-2.jpg',
+      '/assets/products/generated/ss-y-strainer-3.jpg'
     ],
     description: 'Inline Y-Strainers and conical filters to protect pumps and equipment from particulates in sanitary lines.',
     seoTitle: 'SS Sanitary Y-Strainers | SNOX.IN',
@@ -263,11 +263,11 @@ export const productsData = [
     name: 'SS Sight View Glass Assembly',
     category: 'Accessories',
     price: 'Contact for Quote',
-    image: '/assets/products/generated/ss-sight-glass-1.webp',
+    image: '/assets/products/generated/ss-sight-glass-1.jpg',
     images: [
-      '/assets/products/generated/ss-sight-glass-1.webp',
-      '/assets/products/generated/ss-sight-glass-2.webp',
-      '/assets/products/generated/ss-sight-glass-3.webp'
+      '/assets/products/generated/ss-sight-glass-1.jpg',
+      '/assets/products/generated/ss-sight-glass-2.jpg',
+      '/assets/products/generated/ss-sight-glass-3.jpg'
     ],
     description: 'Tubular and cross sight glasses offering 360-degree observation of fluid flow in critical pipelines.',
     seoTitle: 'Sanitary Sight Glass Assemblies | SNOX.IN',
@@ -299,11 +299,11 @@ export const productsData = [
     name: 'SS Pneumatic Actuated Valves',
     category: 'Valves',
     price: 'Contact for Quote',
-    image: '/assets/products/generated/ss-pneumatic-valves-1.webp',
+    image: '/assets/products/generated/ss-pneumatic-valves-1.jpg',
     images: [
-      '/assets/products/generated/ss-pneumatic-valves-1.webp',
-      '/assets/products/generated/ss-pneumatic-valves-2.webp',
-      '/assets/products/generated/ss-pneumatic-valves-3.webp'
+      '/assets/products/generated/ss-pneumatic-valves-1.jpg',
+      '/assets/products/generated/ss-pneumatic-valves-2.jpg',
+      '/assets/products/generated/ss-pneumatic-valves-3.jpg'
     ],
     description: 'Automated sanitary valves powered by pneumatic actuators for integration into PLC controlled processing plants.',
     seoTitle: 'Pneumatic Actuated Sanitary Valves | SNOX.IN',

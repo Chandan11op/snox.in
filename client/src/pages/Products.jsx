@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { useSearchParams, Link } from 'react-router-dom';
 import { ArrowRight, Filter, SearchX } from 'lucide-react';
@@ -11,6 +11,16 @@ export default function Products() {
   const [activeCategory, setActiveCategory] = useState('All');
   const [searchParams, setSearchParams] = useSearchParams();
   const searchQuery = searchParams.get('search') || '';
+  const gridRef = useRef(null);
+
+  const handleCategoryChange = (category) => {
+    setActiveCategory(category);
+    if (gridRef.current) {
+      const yOffset = -100; // Account for sticky navbar
+      const y = gridRef.current.getBoundingClientRect().top + window.scrollY + yOffset;
+      window.scrollTo({ top: y, behavior: 'smooth' });
+    }
+  };
 
   const filteredProducts = products.filter(p => {
     const matchesCategory =
@@ -80,7 +90,7 @@ export default function Products() {
 
               <li>
                 <button
-                  onClick={() => setActiveCategory('All')}
+                  onClick={() => handleCategoryChange('All')}
                   className={`w-auto md:w-full text-left px-3 sm:px-4 py-1.5 sm:py-2.5 rounded-lg transition-colors font-medium text-xs sm:text-base ${
                     activeCategory === 'All'
                       ? 'bg-primary text-white'
@@ -94,7 +104,7 @@ export default function Products() {
               {categories.map(category => (
                 <li key={category}>
                   <button
-                    onClick={() => setActiveCategory(category)}
+                    onClick={() => handleCategoryChange(category)}
                     className={`w-auto md:w-full text-left px-3 sm:px-4 py-1.5 sm:py-2.5 rounded-lg transition-colors font-medium text-xs sm:text-base ${
                       activeCategory === category
                         ? 'bg-primary text-white'
@@ -111,11 +121,11 @@ export default function Products() {
         </aside>
 
         {/* Product Grid */}
-        <main className="flex-1 min-w-0">
+        <main ref={gridRef} className="flex-1 min-w-0">
 
           <motion.div
             layout
-            className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-6 lg:gap-8"
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8"
           >
 
             {filteredProducts.map((product) => (
@@ -124,7 +134,7 @@ export default function Products() {
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.9 }}
-                whileHover={{ y: -15, scale: 1.02, rotateX: 1, rotateY: -1 }}
+                whileHover={{ y: -5, scale: 1.01 }}
                 transition={{
                   type: "spring",
                   stiffness: 300,
@@ -135,12 +145,12 @@ export default function Products() {
               >
 
                 {/* Product Image */}
-                <div className="relative h-40 sm:h-52 md:h-56 bg-gray-50 p-3 sm:p-5 md:p-6 flex items-center justify-center overflow-hidden">
+                <div className="relative h-32 sm:h-40 md:h-48 flex items-center justify-center overflow-hidden">
 
                   <div className="absolute inset-0 bg-accent/0 group-hover:bg-accent/10 transition-colors duration-500 rounded-full blur-2xl"></div>
 
                   <motion.img
-                    whileHover={{ scale: 1.1 }}
+                    whileHover={{ scale: 1.05 }}
                     src={product.images[0]}
                     alt={product.name}
                     className="w-full h-full object-contain mix-blend-multiply relative z-10 transition-transform duration-500"
@@ -206,7 +216,7 @@ export default function Products() {
 
               <button
                 onClick={() => {
-                  setActiveCategory('All');
+                  handleCategoryChange('All');
                   setSearchParams({});
                 }}
                 className="btn bg-primary text-white px-5 sm:px-6 py-2 sm:py-2.5 rounded-full hover:bg-primary-light text-xs sm:text-base"
