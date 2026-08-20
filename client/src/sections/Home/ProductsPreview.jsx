@@ -73,7 +73,7 @@ export default function ProductsPreview() {
             <motion.div
               key={product.id}
               variants={cardVariants}
-              whileHover={{ y: -15, scale: 1.02, rotateX: 1, rotateY: -1 }}
+              whileHover={{ y: -5, scale: 1.01 }}
               transition={{
                 type: "spring",
                 stiffness: 300,
@@ -83,10 +83,10 @@ export default function ProductsPreview() {
             >
 
               {/* Product Image */}
-              <div className="relative h-52 sm:h-56 md:h-60 lg:h-64 overflow-hidden bg-gray-50 flex items-center justify-center p-5 sm:p-6 md:p-8">
+              <div className="relative h-44 sm:h-48 md:h-52 lg:h-56 overflow-hidden flex items-center justify-center">
 
                 <motion.div
-                  whileHover={{ scale: 1.1 }}
+                  whileHover={{ scale: 1.05 }}
                   transition={{ duration: 0.4 }}
                   className="w-full h-full relative"
                 >

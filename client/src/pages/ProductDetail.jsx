@@ -65,7 +65,7 @@ export default function ProductDetail() {
         {/* Top Section */}
         <div className="flex flex-col lg:flex-row justify-between items-start mb-10 sm:mb-12 lg:mb-16">
 
-          <div className="w-full lg:w-2/3 pr-0 lg:pr-12">
+          <div className="w-full lg:w-3/4 xl:w-2/3 pr-0 lg:pr-8 xl:pr-12">
 
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-display font-bold text-accent mb-5 sm:mb-6 lg:mb-8 uppercase tracking-wide break-words">
               {product.name}
@@ -92,7 +92,7 @@ export default function ProductDetail() {
           </div>
 
           {/* Certification Logos - Right Side */}
-          <div className="hidden lg:flex flex-col items-end w-1/3 pl-6">
+          <div className="hidden lg:flex flex-col items-end w-1/4 xl:w-1/3 pl-4 xl:pl-6">
             <img
               src={fdaLogo}
               alt="Certification"
@@ -106,12 +106,12 @@ export default function ProductDetail() {
         </div>
 
         {/* 3-Column Image Gallery */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-5 md:gap-6 lg:gap-8 mb-10 sm:mb-12 lg:mb-16">
+        <div className="max-w-5xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-5 md:gap-6 lg:gap-8 mb-10 sm:mb-12 lg:mb-16">
 
           {product.images.map((img, idx) => (
             <motion.div
               key={idx}
-              className="relative bg-gray-50 rounded-lg overflow-hidden border border-gray-200 aspect-square flex items-center justify-center p-4 sm:p-5 md:p-6"
+              className="relative rounded-lg overflow-hidden border border-gray-200 aspect-square flex items-center justify-center"
               whileHover={{ scale: 1.02 }}
               transition={{ type: "spring", stiffness: 300 }}
             >
@@ -142,7 +142,7 @@ export default function ProductDetail() {
               Dimensional Specifications
             </h2>
 
-            <div className="overflow-x-auto shadow-sm rounded-lg border border-gray-200">
+            <div className="w-full overflow-x-auto shadow-sm rounded-lg border border-gray-200">
               <table className="w-full min-w-max text-center border-collapse bg-white">
 
                 <thead className="bg-primary text-white">

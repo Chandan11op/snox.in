@@ -25,7 +25,7 @@ export default function Hero() {
 
   return (
     <section
-      className="relative min-h-[calc(100vh-112px)] sm:min-h-[calc(100vh-100px)] lg:min-h-[calc(100vh-112px)] flex items-center justify-center overflow-hidden bg-primary py-10 sm:py-12 lg:py-16"
+      className="relative min-h-[75vh] sm:min-h-[70vh] lg:min-h-[75vh] flex items-center justify-center overflow-hidden bg-primary py-8 sm:py-10 lg:py-12"
       style={{
         backgroundImage: 'url(/assets/images/hero-bg.png)',
         backgroundSize: 'cover',
@@ -53,7 +53,7 @@ export default function Hero() {
         />
       </div>
 
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 flex flex-col items-center justify-center min-h-[75vh] sm:min-h-[70vh] lg:min-h-[60vh] w-full">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 flex flex-col items-center justify-center min-h-[60vh] sm:min-h-[55vh] lg:min-h-[50vh] w-full">
 
         {/* Navigation Arrows */}
         <button
@@ -123,16 +123,16 @@ export default function Hero() {
               {/* Image Content */}
               <div className="w-full lg:w-1/2 relative order-1 lg:order-2 mt-2 sm:mt-4 lg:mt-0">
 
-                <div className="relative w-full aspect-square max-w-[280px] sm:max-w-sm md:max-w-md lg:max-w-md mx-auto">
+                <div className="relative w-full aspect-square max-w-[220px] sm:max-w-[280px] md:max-w-[320px] lg:max-w-[380px] mx-auto">
 
-                  <div className="absolute inset-0 border border-white/10 rounded-full animate-[spin_20s_linear_infinite]"></div>
+                  <div className="absolute inset-0 border border-white/10 rounded-2xl sm:rounded-3xl transform rotate-3"></div>
 
-                  <div className="absolute inset-3 sm:inset-4 border border-accent/20 rounded-full animate-[spin_15s_linear_infinite_reverse]"></div>
+                  <div className="absolute inset-0 border border-accent/20 rounded-2xl sm:rounded-3xl transform -rotate-3"></div>
 
                   <motion.div
-                    className="absolute inset-6 sm:inset-8 rounded-full overflow-hidden border-2 sm:border-4 border-white/10 shadow-2xl bg-white flex items-center justify-center p-5 sm:p-6 md:p-8"
-                    animate={{ y: [0, -15, 0] }}
-                    transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+                    className="absolute inset-0 rounded-2xl sm:rounded-3xl overflow-hidden border-2 sm:border-4 border-white/10 shadow-2xl flex items-center justify-center z-10"
+                    animate={{ y: [0, -8, 0] }}
+                    transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
                   >
                     <img
                       src={carouselProducts[activeSlide].images[0]}
@@ -157,11 +157,10 @@ export default function Hero() {
           <button
             key={idx}
             onClick={() => setActiveSlide(idx)}
-            className={`h-2.5 sm:h-3 rounded-full transition-all duration-300 ${
-              activeSlide === idx
-                ? 'bg-accent w-6 sm:w-8'
-                : 'bg-white/50 hover:bg-white w-2.5 sm:w-3'
-            }`}
+            className={`h-2.5 sm:h-3 rounded-full transition-all duration-300 ${activeSlide === idx
+              ? 'bg-accent w-6 sm:w-8'
+              : 'bg-white/50 hover:bg-white w-2.5 sm:w-3'
+              }`}
             aria-label={`Go to slide ${idx + 1}`}
           />
         ))}
